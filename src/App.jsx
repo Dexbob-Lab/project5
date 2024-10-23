@@ -1,12 +1,12 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './layouts/Header';
 import Footer from './layouts/Footer';
-import Home from './pages/home';
-import Information from './pages/home';
-import Course from './pages/home';
-import Application from './pages/home';
-import Communication from './pages/home';
-import Record from './pages/home';
+import Home from './pages/Home';
+import Information from './pages/Information';
+import Course from './pages/Course';
+import Application from './pages/Application';
+import Communication from './pages/Communication';
+import Record from './pages/Record';
 
 function App() {
 	const location = useLocation();

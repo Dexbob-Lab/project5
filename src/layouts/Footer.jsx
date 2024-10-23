@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
 	return (
 		<footer className='footer'>
 			<hr />
-			<h1>LOGO</h1>
+			<Link to='/'>
+				<img src='logo1.png' width='50' alt='' />
+			</Link>
 			<section> 2024, All Rights Reserved.</section>
 		</footer>
 	);
