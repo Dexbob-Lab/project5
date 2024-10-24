@@ -1,4 +1,13 @@
 .footer {
+	width: 100%;
+	padding: 100px 10vw;
+	color: #aaa;
+	background: #333;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 100px;
+
 	img {
 		width: 50px;
 	}

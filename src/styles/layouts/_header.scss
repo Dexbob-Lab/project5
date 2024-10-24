@@ -1,7 +1,6 @@
 .header {
 	width: 100%;
-	padding: 30px 50px;
-	// margin-bottom: 50px;
+	padding: 30px 10vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -20,7 +19,7 @@
 		.gnb {
 			display: flex;
 			gap: 50px;
-			font: 600 1rem/1;
+			font: 600 1rem/1 'Raleway';
 		}
 	}
 }
