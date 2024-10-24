@@ -1,10 +1,12 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { MENU, TYPE } from '../data/menuData';
-import { useGlobalData } from '../hooks/useGlobalData';
+import useGlobalData from '../hooks/useGlobalData';
+import useLink from '../hooks/useLink';
 
 export default function SideMenu() {
 	const closeSideMenu = useGlobalData(state => state.closeSideMenu);
-	const { pathname } = useLocation();
+	const linkPage = useLink();
+
 	return (
 		<aside className='sideMenu'>
 			<div className='logo'>
@@ -17,8 +19,8 @@ export default function SideMenu() {
 					{MENU.map((data, idx) => {
 						if (data.type === TYPE.MAIN) {
 							return (
-								<li key={idx} onClick={closeSideMenu}>
-									<Link to={data.path}>{data.display}</Link>
+								<li key={idx} onClick={() => linkPage(data.path, closeSideMenu)}>
+									<div>{data.text.kr}</div>
 								</li>
 							);
 						}

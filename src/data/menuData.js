@@ -12,10 +12,28 @@ export const TYPE = {
 };
 
 export const MENU = [
-	{ name: 'home', path: '/', display: 'HOME', page: Home, type: TYPE.HOME },
-	{ name: 'information', path: '/information', display: 'INFORMATION', page: Information, type: TYPE.MAIN },
-	{ name: 'course', path: '/course', display: 'COURSE', page: Course, type: TYPE.MAIN },
-	{ name: 'application', path: '/application', display: 'APPLICATION', page: Application, type: TYPE.MAIN },
-	{ name: 'communication', path: '/communication', display: 'COMMUNICATION', page: Communication, type: TYPE.MAIN },
-	{ name: 'record', path: '/record', display: 'RECORD', page: Record, type: TYPE.MAIN }
+	{ name: 'home', path: '/', text: { en: 'HOME', kr: '메인화면' }, page: Home, type: TYPE.HOME },
+	{
+		name: 'information',
+		path: '/information',
+		text: { en: 'INFORMATION', kr: '대회안내' },
+		page: Information,
+		type: TYPE.MAIN
+	},
+	{ name: 'course', path: '/course', text: { en: 'COURSE', kr: '코스안내' }, page: Course, type: TYPE.MAIN },
+	{
+		name: 'application',
+		path: '/application',
+		text: { en: 'APPLICATION', kr: '참가신청' },
+		page: Application,
+		type: TYPE.MAIN
+	},
+	{
+		name: 'communication',
+		path: '/communication',
+		text: { en: 'COMMUNICATION', kr: '참여마당' },
+		page: Communication,
+		type: TYPE.MAIN
+	},
+	{ name: 'record', path: '/record', text: { en: 'RECORD', kr: '기록조회' }, page: Record, type: TYPE.MAIN }
 ];

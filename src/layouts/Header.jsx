@@ -1,11 +1,14 @@
 import { Link, useLocation } from 'react-router-dom';
-import { MENU, TYPE } from '../data/menuData';
-import { useGlobalData } from '../hooks/useGlobalData';
 import { FaBars } from 'react-icons/fa';
+import { MENU, TYPE } from '../data/menuData';
+import useGlobalData from '../hooks/useGlobalData';
+import useLink from '../hooks/useLink';
 
 export default function Header() {
 	const toggleSideMenu = useGlobalData(state => state.toggleSideMenu);
 	const { pathname } = useLocation();
+	const linkPage = useLink();
+
 	return (
 		<header className='header'>
 			<Link to='/'>
@@ -16,8 +19,8 @@ export default function Header() {
 					{MENU.map((data, idx) => {
 						if (data.type === TYPE.MAIN) {
 							return (
-								<li key={idx} className={pathname === data.path ? 'on' : ''}>
-									<Link to={data.path}>{data.display}</Link>
+								<li key={idx} className={pathname === data.path ? 'on' : ''} onClick={() => linkPage(data.path)}>
+									{data.text.kr}
 								</li>
 							);
 						}
