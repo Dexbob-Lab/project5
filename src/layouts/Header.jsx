@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import menuData from '../data/menuData';
+import { MENU, TYPE } from '../data/menuData';
 
 export default function Header() {
 	return (
@@ -9,17 +9,18 @@ export default function Header() {
 			</Link>
 			<nav>
 				<ul className='gnb'>
-					{menuData.map((data, idx) => {
-						return (
-							<li key={idx} className={data.name}>
-								<Link to={data.path}>{data.display}</Link>
-							</li>
-						);
+					{MENU.map((data, idx) => {
+						if (data.type === TYPE.MAIN) {
+							return (
+								<li key={idx} className={data.name}>
+									<Link to={data.path}>{data.display}</Link>
+								</li>
+							);
+						}
 					})}
 				</ul>
 			</nav>
 			<button className='btnMenuToggle'></button>
-			<hr />
 		</header>
 	);
 }

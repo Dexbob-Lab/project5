@@ -1,1 +1,26 @@
+.header {
+	width: 100%;
+	padding: 30px 50px;
+	// margin-bottom: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 1px solid #ddd;
+	gap: 100px;
 
+	img {
+		width: 30px;
+	}
+
+	nav {
+		display: flex;
+		align-items: center;
+		gap: 50px;
+
+		.gnb {
+			display: flex;
+			gap: 50px;
+			font: 600 1rem/1;
+		}
+	}
+}
