@@ -3,9 +3,11 @@ import Header from './layouts/Header';
 import Footer from './layouts/Footer';
 import { MENU } from './data/menuData';
 import SideMenu from './layouts/SideMenu';
+import { useGlobalData } from './hooks/useGlobalData';
 
 function App() {
 	const location = useLocation();
+	const sideMenuFlg = useGlobalData(state => state.SideMenuFlg);
 	return (
 		<>
 			<Header />
@@ -13,14 +15,8 @@ function App() {
 				{MENU.map((data, idx) => {
 					return <Route key={idx} path={data.path} element={<data.page />} />;
 				})}
-				{/* <Route path='/' element={<Home />} />
-				<Route path='/information' element={<Information />} />
-				<Route path='/course' element={<Course />} />
-				<Route path='/application' element={<Application />} />
-				<Route path='/communication' element={<Communication />} />
-				<Route path='/record' element={<Record />} /> */}
 			</Routes>
-			<SideMenu />
+			{sideMenuFlg && <SideMenu />}
 			<Footer />
 		</>
 	);
