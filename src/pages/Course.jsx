@@ -27,9 +27,9 @@ export default function Course() {
 					<button onClick={() => moveSubPages(c2)}>{c2.text[Lang]}</button>
 				</div>
 			</nav>
-			<section>
+			<article>
 				<SubPage.page />
-			</section>
+			</article>
 		</Layout>
 	);
 }
