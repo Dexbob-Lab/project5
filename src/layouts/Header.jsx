@@ -5,7 +5,8 @@ import useGlobalData from '../hooks/useGlobalData';
 import useLink from '../hooks/useLink';
 
 export default function Header() {
-	const toggleSideMenu = useGlobalData(state => state.toggleSideMenu);
+	// const toggleSideMenu = useGlobalData(state => state.toggleSideMenu);
+	const { Lang, toggleSideMenu } = useGlobalData();
 	const { pathname } = useLocation();
 	const linkPage = useLink();
 
@@ -20,7 +21,7 @@ export default function Header() {
 						if (data.type === TYPE.MAIN) {
 							return (
 								<li key={idx} className={pathname === data.path ? 'on' : ''} onClick={() => linkPage(data.path)}>
-									{data.text.kr}
+									{data.text[Lang]}
 								</li>
 							);
 						}

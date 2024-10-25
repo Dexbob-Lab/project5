@@ -4,7 +4,7 @@ import useGlobalData from '../hooks/useGlobalData';
 import useLink from '../hooks/useLink';
 
 export default function SideMenu() {
-	const closeSideMenu = useGlobalData(state => state.closeSideMenu);
+	const { Lang, closeSideMenu } = useGlobalData();
 	const linkPage = useLink();
 
 	return (
@@ -20,7 +20,7 @@ export default function SideMenu() {
 						if (data.type === TYPE.MAIN) {
 							return (
 								<li key={idx} onClick={() => linkPage(data.path, closeSideMenu)}>
-									<div>{data.text.kr}</div>
+									<div>{data.text[Lang]}</div>
 								</li>
 							);
 						}
