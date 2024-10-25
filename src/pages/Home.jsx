@@ -4,7 +4,8 @@ export default function Home() {
 	return (
 		<Layout className='home'>
 			<h1>지리산 단감 레이스</h1>
-			<p>HOME</p>
+
+			<div className='spinner'></div>
 		</Layout>
 	);
 }
