@@ -4,6 +4,8 @@ import Course from '../pages/Course';
 import Application from '../pages/Application';
 import Communication from '../pages/Communication';
 import Record from '../pages/Record';
+import Course1 from '../pagesubs/Course1';
+import Course2 from '../pagesubs/Course2';
 
 export const TYPE = {
 	HOME: '0HOME',
@@ -38,16 +40,16 @@ export const MENU = [
 	{ name: 'record', path: '/record', text: { en: 'RECORD', kr: '기록조회' }, page: Record, type: TYPE.MAIN },
 	{
 		name: 'course1',
-		path: '/course',
+		path: '/course/course1',
 		text: { en: 'Course (21.2km)', kr: '코스 (21.2km)' },
-		page: Course,
+		page: Course1,
 		type: TYPE.SUB
 	},
 	{
 		name: 'course2',
-		path: '/course',
+		path: '/course/course2',
 		text: { en: 'Course (12.61km)', kr: '코스 (12.61km)' },
-		page: Course,
+		page: Course2,
 		type: TYPE.SUB
 	}
 ];
@@ -57,4 +59,7 @@ export const getMenuByPath = path => {
 };
 export const getMenuByName = name => {
 	return MENU.find(item => item.name === name);
+};
+export const getMenuByNames = names => {
+	return names.map(data => getMenuByName(data));
 };

@@ -1,12 +1,15 @@
 main {
 	width: 100%;
-	padding: 10vh 10vw;
+	padding: 10px 10vw;
 	min-height: 70vh;
 	background: #ddd;
 	display: flex;
 	justify-content: center;
-	align-items: center;
 	border-bottom: 1px solid #ddd;
+
+	section {
+		width: 100%;
+	}
 
 	.main {
 		width: 100%;

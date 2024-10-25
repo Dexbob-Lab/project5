@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.subMenu {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+
+	.pageName {
+		font: 500 1.1rem/1 'Jua';
+		letter-spacing: 10px;
+	}
+}

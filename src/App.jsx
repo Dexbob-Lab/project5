@@ -15,7 +15,8 @@ function App() {
 			<Header />
 			<Routes location={location} key={location.pathname}>
 				{MENU.map((data, idx) => {
-					if (data.type !== TYPE.SUB) return <Route key={idx} path={data.path} element={<data.page />} />;
+					// if (data.type !== TYPE.SUB) return <Route key={idx} path={data.path} element={<data.page />} />;
+					return <Route key={idx} path={data.path} element={<data.page />} />;
 				})}
 			</Routes>
 			{SideMenuFlg && <SideMenu />}
