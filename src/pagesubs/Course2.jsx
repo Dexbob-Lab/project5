@@ -7,12 +7,12 @@ export default function Course2() {
 	const { Lang, CurrObject } = useGlobalData();
 	return (
 		<Layout className={CurrObject?.name}>
-			<article className='maps'>
+			<figure className='maps'>
 				<p>코스</p>
 				<img src={courseImage} alt='' />
 				<p>고도</p>
 				<img src={altitudeImage} alt='' />
-			</article>
+			</figure>
 			<article className='contents'>
 				<p className='title'>{CurrObject?.text[Lang]}</p>
 				<p>
@@ -25,6 +25,12 @@ export default function Course2() {
 					neque est dolorem explicabo pariatur distinctio modi quam repudiandae! Numquam optio fuga nostrum hic!
 				</p>
 			</article>
+			<figure className='vidFrame'>
+				<iframe
+					title={CurrObject?.text[Lang]}
+					src='https://www.youtube.com/embed/JUDV2j02xgg?si=IW_FcQq9lPlIhKeZ'
+					allowfullscreen></iframe>
+			</figure>
 		</Layout>
 	);
 }

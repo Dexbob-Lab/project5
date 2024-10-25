@@ -25,6 +25,12 @@ export default function Course1() {
 					neque est dolorem explicabo pariatur distinctio modi quam repudiandae! Numquam optio fuga nostrum hic!
 				</p>
 			</article>
+			<figure className='vidFrame'>
+				<iframe
+					title={CurrObject?.text[Lang]}
+					src='https://www.youtube.com/embed/JUDV2j02xgg?si=_-7eHbv0lmFBRzkv'
+					allowfullscreen></iframe>
+			</figure>
 		</Layout>
 	);
 }
