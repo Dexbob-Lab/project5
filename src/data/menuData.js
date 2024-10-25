@@ -12,7 +12,7 @@ export const TYPE = {
 };
 
 export const MENU = [
-	{ name: 'home', path: '/', text: { en: 'HOME', kr: '메인화면' }, page: Home, type: TYPE.HOME },
+	{ name: 'home', path: '/', text: { en: 'DANGAM RACE', kr: '지리산 단감 레이스' }, page: Home, type: TYPE.HOME },
 	{
 		name: 'information',
 		path: '/information',
@@ -35,5 +35,26 @@ export const MENU = [
 		page: Communication,
 		type: TYPE.MAIN
 	},
-	{ name: 'record', path: '/record', text: { en: 'RECORD', kr: '기록조회' }, page: Record, type: TYPE.MAIN }
+	{ name: 'record', path: '/record', text: { en: 'RECORD', kr: '기록조회' }, page: Record, type: TYPE.MAIN },
+	{
+		name: 'course1',
+		path: '/course',
+		text: { en: 'Course (21.2km)', kr: '코스 (21.2km)' },
+		page: Course,
+		type: TYPE.SUB
+	},
+	{
+		name: 'course2',
+		path: '/course',
+		text: { en: 'Course (12.61km)', kr: '코스 (12.61km)' },
+		page: Course,
+		type: TYPE.SUB
+	}
 ];
+
+export const getMenuByPath = path => {
+	return MENU.find(item => item.path === path);
+};
+export const getMenuByName = name => {
+	return MENU.find(item => item.name === name);
+};

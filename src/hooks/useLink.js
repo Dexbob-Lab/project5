@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { MENU } from '../data/menuData';
+import { getMenuByPath } from '../data/menuData';
 import useGlobalData from '../hooks/useGlobalData';
 
 export default function useLink() {
@@ -7,7 +7,7 @@ export default function useLink() {
 	const navigate = useNavigate();
 
 	return (path, callback = undefined) => {
-		setCurrObject(MENU.find(item => item.path === path));
+		setCurrObject(getMenuByPath(path));
 		navigate(path);
 		if (callback && typeof callback === 'function') callback([path, CurrObject]);
 	};

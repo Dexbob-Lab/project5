@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { MENU, TYPE } from '../data/menuData';
 import useGlobalData from '../hooks/useGlobalData';
@@ -11,9 +11,9 @@ export default function Header() {
 
 	return (
 		<header className='header'>
-			<Link to='/'>
+			<button onClick={() => linkPage('/')}>
 				<img src='logo1.png' width='50' alt='' />
-			</Link>
+			</button>
 			<nav>
 				<ul className='gnb'>
 					{MENU.map((data, idx) => {

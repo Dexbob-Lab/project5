@@ -25,11 +25,17 @@ li {
 }
 
 a {
+	cursor: pointer;
 	text-decoration: none;
 	color: inherit;
 	font-family: inherit;
 	font-weight: inherit;
 	outline: 0;
+}
+
+button {
+	cursor: pointer;
+	border: none;
 }
 
 input,

@@ -37,10 +37,14 @@
 	}
 
 	.btnMenuToggle {
-		cursor: pointer;
-		border: none;
-		font: 900 1rem/1;
+		font: 900 1.6rem/1 'Jua';
 		display: none;
+		transform-origin: 50% 50%;
+		transition: 1s;
+
+		&:hover {
+			transform: scale(1.2) rotate(360deg);
+		}
 	}
 }
 
