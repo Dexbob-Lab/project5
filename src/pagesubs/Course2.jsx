@@ -1,4 +1,3 @@
-import Layout from '../layouts/Layout';
 import useGlobalData from '../hooks/useGlobalData';
 import courseImage from '../assets/images/course2.png';
 import altitudeImage from '../assets/images/altitude2.png';
@@ -6,7 +5,7 @@ import altitudeImage from '../assets/images/altitude2.png';
 export default function Course2() {
 	const { Lang, CurrObject } = useGlobalData();
 	return (
-		<Layout className={CurrObject?.name}>
+		<>
 			<figure className='maps'>
 				<p>코스</p>
 				<img src={courseImage} alt='' />
@@ -29,8 +28,8 @@ export default function Course2() {
 				<iframe
 					title={CurrObject?.text[Lang]}
 					src='https://www.youtube.com/embed/JUDV2j02xgg?si=IW_FcQq9lPlIhKeZ'
-					allowfullscreen></iframe>
+					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>
 			</figure>
-		</Layout>
+		</>
 	);
 }

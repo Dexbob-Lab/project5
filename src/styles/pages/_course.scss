@@ -3,11 +3,22 @@
 .subMenu {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	// justify-content: space-between;
 
 	.pageName {
+		width: 100%;
 		font: 500 1.1rem/1 'Jua';
-		letter-spacing: 10px;
+		letter-spacing: 5px;
+	}
+	.menuBtn {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		gap: 50px;
+		button {
+			font: 300 0.9rem/1 'Orbit';
+			border-bottom: 1px solid #555;
+		}
 	}
 	article {
 		width: 100%;

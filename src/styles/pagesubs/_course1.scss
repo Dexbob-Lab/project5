@@ -10,10 +10,16 @@
 .contents {
 	width: 100%;
 	font: 500 1.2rem/1.5 'Jua' 'Orbit';
+	line-height: 1.8;
 
 	.title {
 		width: 100%;
 		padding: 20px 0;
 		font: 900 1.2rem/1.5 'Jua' 'Orbit';
+	}
+
+	p {
+		white-space: pre-wrap;
+		word-break: keep-all;
 	}
 }
