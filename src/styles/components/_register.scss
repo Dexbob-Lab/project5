@@ -96,15 +96,34 @@
 }
 
 @media screen and (max-width: $tablet) {
-	form {
-		span {
+	.register {
+		form {
 			width: 100%;
-			label {
+			padding-right: 0;
+			padding-bottom: 50px;
+			border-right: none;
+			border-bottom: 1px solid #bbb;
+
+			span {
 				width: 100%;
-				display: block;
+
+				label {
+					width: 100%;
+					margin-bottom: 5px;
+				}
+				input {
+					width: 80%;
+					margin: 10px 5% 30px 20%;
+				}
 			}
-			input {
-				width: 100%;
+		}
+
+		.info {
+			width: 100%;
+			margin-top: 50px;
+
+			ul {
+				padding-left: 20px;
 			}
 		}
 	}

@@ -9,10 +9,12 @@ export default function Register({ course }) {
 	const resetForm = () => {
 		ref_elements.current.forEach(dom => {
 			if (!dom) return;
-			if (dom.type === 'radio')
+			if (dom.type === 'radio') {
 				if (dom.value == shirtSizeList[0]) dom.defaultChecked = true;
 				else dom.defaultChecked = false;
-			else {
+			} else if (dom.type === 'date') {
+				dom.defaultValue = '1970-01-01';
+			} else {
 				dom.value = '';
 			}
 		});
@@ -44,23 +46,44 @@ export default function Register({ course }) {
 				<input ref={setRef_elements} type='hidden' name='course' value={course} />
 				<span>
 					<label htmlFor='uName'>이름(Name)</label>
-					<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' />
+					<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' required />
 				</span>
 				<span>
 					<label htmlFor='uBirth'>생년월일(Date of Birth)</label>
-					<input ref={setRef_elements} type='date' name='user_birth' id='uBirth' />
+					<input ref={setRef_elements} type='date' name='user_birth' id='uBirth' defaultValue='1970-01-01' required />
 				</span>
 				<span>
 					<label htmlFor='uPhone'>연락처(Phone Number)</label>
-					<input ref={setRef_elements} type='tel' name='user_phone' id='uPhone' placeholder='Leave your phone number' />
+					<input
+						ref={setRef_elements}
+						type='tel'
+						name='user_phone'
+						id='uPhone'
+						placeholder='Leave your phone number'
+						required
+					/>
 				</span>
 				<span>
 					<label htmlFor='uAddress'>주소(Address)</label>
-					<input ref={setRef_elements} type='text' name='user_address' id='uAddress' placeholder='Leave your address' />
+					<input
+						ref={setRef_elements}
+						type='text'
+						name='user_address'
+						id='uAddress'
+						placeholder='Leave your address'
+						required
+					/>
 				</span>
 				<span>
 					<label htmlFor='uMail'>이메일(e-mail)</label>
-					<input ref={setRef_elements} type='email' name='user_email' id='uMail' placeholder='Leave your email' />
+					<input
+						ref={setRef_elements}
+						type='email'
+						name='user_email'
+						id='uMail'
+						placeholder='Leave your email'
+						required
+					/>
 				</span>
 				<span>
 					<label htmlFor='uPassword'>비밀번호(password)</label>
@@ -70,6 +93,7 @@ export default function Register({ course }) {
 						name='user_password'
 						id='uPassword'
 						placeholder='Leave your password'
+						required
 					/>
 				</span>
 				<fieldset>

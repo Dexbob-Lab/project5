@@ -1,0 +1,33 @@
+@use '../variables' as *;
+
+.subMenu {
+	width: 100%;
+	display: flex;
+
+	.pageName {
+		width: 100%;
+		font: 500 1.5rem/1 'Jua';
+		letter-spacing: 5px;
+	}
+	.menuBtn {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		gap: 50px;
+		button {
+			font: 300 0.9rem/1 'Orbit';
+			border-bottom: 1px solid #555;
+		}
+	}
+	article {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.subMenu {
+		.menuBtn {
+			gap: 10px;
+		}
+	}
+}
