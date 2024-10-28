@@ -9,6 +9,10 @@ import Course2 from '../pagesubs/Course2';
 import Application1 from '../pagesubs/Application1';
 import Application2 from '../pagesubs/Application2';
 import Application3 from '../pagesubs/Application3';
+import Communication1 from '../pagesubs/Communication1';
+import Communication2 from '../pagesubs/Communication2';
+import Communication3 from '../pagesubs/Communication3';
+import Communication4 from '../pagesubs/Communication4';
 
 export const TYPE = {
 	HOME: '0HOME',
@@ -74,6 +78,34 @@ export const MENU = [
 		path: '/application/application3',
 		text: { en: 'Volunteer', kr: '자원봉사' },
 		page: Application3,
+		type: TYPE.SUB
+	},
+	{
+		name: 'notices',
+		path: '/communication/notices',
+		text: { en: 'Notices', kr: '공지사항' },
+		page: Communication1,
+		type: TYPE.SUB
+	},
+	{
+		name: 'questions',
+		path: '/communication/questions',
+		text: { en: 'Questions', kr: '문의사항' },
+		page: Communication2,
+		type: TYPE.SUB
+	},
+	{
+		name: 'photogallery',
+		path: '/communication/photogallery',
+		text: { en: 'Photo Gallery', kr: '포토 갤러리' },
+		page: Communication3,
+		type: TYPE.SUB
+	},
+	{
+		name: 'videogallery',
+		path: '/communication/videogallery',
+		text: { en: 'Video Gallery', kr: '동영상 갤러리' },
+		page: Communication4,
 		type: TYPE.SUB
 	}
 ];
