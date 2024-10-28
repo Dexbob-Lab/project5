@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
-export default function Register() {
+export default function Register({ course }) {
 	const ref_form = useRef(null);
 	const ref_elements = useRef([]);
 	const shirtSizeList = ['S', 'M', 'L', 'XL', 'XXL'];
@@ -13,8 +13,7 @@ export default function Register() {
 				if (dom.value == shirtSizeList[0]) dom.defaultChecked = true;
 				else dom.defaultChecked = false;
 			else {
-				console.log(dom.value);
-				// dom.value = '';
+				dom.value = '';
 			}
 		});
 	};
@@ -42,6 +41,7 @@ export default function Register() {
 	return (
 		<div className='register'>
 			<form ref={ref_form} onSubmit={sendForm}>
+				<input ref={setRef_elements} type='hidden' name='course' value={course} />
 				<span>
 					<label htmlFor='uName'>이름(Name)</label>
 					<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' />

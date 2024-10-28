@@ -3,9 +3,10 @@ import useGlobalData from '../hooks/useGlobalData';
 
 export default function Course1() {
 	const { Lang, CurrObject } = useGlobalData();
+
 	return (
 		<>
-			<Register />
+			<Register course={CurrObject.text[Lang]} />
 		</>
 	);
 }
