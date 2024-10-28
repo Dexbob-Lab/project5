@@ -2,10 +2,18 @@ import { Link } from 'react-router-dom';
 import { MENU, TYPE } from '../data/menuData';
 import useGlobalData from '../hooks/useGlobalData';
 import useLink from '../hooks/useLink';
+import { useEffect } from 'react';
+import { throttle } from 'lodash';
 
 export default function SideMenu() {
 	const { Lang, closeSideMenu } = useGlobalData();
 	const linkPage = useLink();
+	const closePanel = throttle(() => window.innerWidth >= 1000 && closeSideMenu(), 500);
+
+	useEffect(() => {
+		window.addEventListener('resize', closePanel);
+		return () => window.removeEventListener('resize', closePanel);
+	}, [closePanel]);
 
 	return (
 		<aside className='sideMenu'>
