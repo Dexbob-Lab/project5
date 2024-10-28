@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function Application() {
 	const { Lang, setCurrObject, CurrObject } = useGlobalData();
-	const [a1, a2] = getMenuByNames(['application1', 'application2']);
+	const [a1, a2, a3] = getMenuByNames(['application1', 'application2', 'application3']);
 	const [SubPage, setSubPage] = useState(null);
 
 	const moveSubPages = obj => {
@@ -24,6 +24,7 @@ export default function Application() {
 				<div className='menuBtn'>
 					<button onClick={() => moveSubPages(a1)}>{a1?.text[Lang]}</button>
 					<button onClick={() => moveSubPages(a2)}>{a2?.text[Lang]}</button>
+					<button onClick={() => moveSubPages(a3)}>{a3?.text[Lang]}</button>
 				</div>
 			</nav>
 			{SubPage && <SubPage.page />}

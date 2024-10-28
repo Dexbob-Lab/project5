@@ -1,16 +1,24 @@
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
-export default function Register({ course }) {
+export default function Register({ children, isVolunteer = false }) {
 	const ref_form = useRef(null);
 	const ref_elements = useRef([]);
-	const shirtSizeList = ['S', 'M', 'L', 'XL', 'XXL'];
+	const shirtSizeList = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
+	const genderList = ['남성(Male)', '여성(Female)'];
+	const accommList = ['O', 'X'];
 
 	const resetForm = () => {
 		ref_elements.current.forEach(dom => {
 			if (!dom) return;
-			if (dom.type === 'radio') {
+			if (dom.name === 'shirt_size') {
 				if (dom.value == shirtSizeList[0]) dom.defaultChecked = true;
+				else dom.defaultChecked = false;
+			} else if (dom.name === 'gender') {
+				if (dom.value == genderList[0]) dom.defaultChecked = true;
+				else dom.defaultChecked = false;
+			} else if (dom.name === 'accommodation') {
+				if (dom.value == accommList[0]) dom.defaultChecked = true;
 				else dom.defaultChecked = false;
 			} else if (dom.type === 'date') {
 				dom.defaultValue = '1970-01-01';
@@ -41,63 +49,81 @@ export default function Register({ course }) {
 	const setRef_elements = dom => (ref_elements.current[cnt++] = dom);
 
 	return (
-		<div className='register'>
-			<form ref={ref_form} onSubmit={sendForm}>
-				<input ref={setRef_elements} type='hidden' name='course' value={course} />
-				<span>
-					<label htmlFor='uName'>이름(Name)</label>
-					<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' required />
-				</span>
-				<span>
-					<label htmlFor='uBirth'>생년월일(Date of Birth)</label>
-					<input ref={setRef_elements} type='date' name='user_birth' id='uBirth' defaultValue='1970-01-01' required />
-				</span>
-				<span>
-					<label htmlFor='uPhone'>연락처(Phone Number)</label>
-					<input
-						ref={setRef_elements}
-						type='tel'
-						name='user_phone'
-						id='uPhone'
-						placeholder='Leave your phone number'
-						required
-					/>
-				</span>
-				<span>
-					<label htmlFor='uAddress'>주소(Address)</label>
-					<input
-						ref={setRef_elements}
-						type='text'
-						name='user_address'
-						id='uAddress'
-						placeholder='Leave your address'
-						required
-					/>
-				</span>
-				<span>
-					<label htmlFor='uMail'>이메일(e-mail)</label>
-					<input
-						ref={setRef_elements}
-						type='email'
-						name='user_email'
-						id='uMail'
-						placeholder='Leave your email'
-						required
-					/>
-				</span>
-				<span>
-					<label htmlFor='uPassword'>비밀번호(password)</label>
-					<input
-						ref={setRef_elements}
-						type='password'
-						name='user_password'
-						id='uPassword'
-						placeholder='Leave your password'
-						required
-					/>
-				</span>
-				<fieldset>
-					<legend>옷사이즈(shirt-size)</legend>
+		<form ref={ref_form} className='register' onSubmit={sendForm}>
+			<span>
+				<label htmlFor='uName'>이름(Name)</label>
+				<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' required />
+			</span>
+			<span>
+				<label htmlFor='uBirth'>생년월일(Date of Birth)</label>
+				<input ref={setRef_elements} type='date' name='user_birth' id='uBirth' defaultValue='1970-01-01' required />
+			</span>
+			<span>
+				<label htmlFor='uPhone'>연락처(Phone Number)</label>
+				<input
+					ref={setRef_elements}
+					type='tel'
+					name='user_phone'
+					id='uPhone'
+					placeholder='Leave your phone number'
+					required
+				/>
+			</span>
+			<span>
+				<label htmlFor='uAddress'>주소(Address)</label>
+				<input
+					ref={setRef_elements}
+					type='text'
+					name='user_address'
+					id='uAddress'
+					placeholder='Leave your address'
+					required
+				/>
+			</span>
+			<span>
+				<label htmlFor='uMail'>이메일(e-mail)</label>
+				<input
+					ref={setRef_elements}
+					type='email'
+					name='user_email'
+					id='uMail'
+					placeholder='Leave your email'
+					required
+				/>
+			</span>
+			<span>
+				<label htmlFor='uPassword'>비밀번호(password)</label>
+				<input
+					ref={setRef_elements}
+					type='password'
+					name='user_password'
+					id='uPassword'
+					placeholder='Leave your password'
+					required
+				/>
+			</span>
+			<fieldset>
+				<legend>성별(gender)</legend>
+				<div className='radioBtn'>
+					{genderList.map((data, idx) => {
+						return (
+							<label key={idx}>
+								<input
+									ref={setRef_elements}
+									type='radio'
+									name='gender'
+									value={data}
+									defaultChecked={idx == 0 ? 'true' : ''}
+								/>{' '}
+								{data}
+							</label>
+						);
+					})}
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>옷사이즈(shirt-size)</legend>
+				<div className='radioBtn'>
 					{shirtSizeList.map((data, idx) => {
 						return (
 							<label key={idx}>
@@ -112,25 +138,61 @@ export default function Register({ course }) {
 							</label>
 						);
 					})}
-				</fieldset>
-				<nav className='btnSet'>
-					<input type='reset' value='Cancel' />
-					<input type='submit' value='Send' />
-				</nav>
-			</form>
-			<div className='info'>
-				<h2>Information</h2>
-				<ul>
-					<li>2024년 지리산 숲길 단감레이스 21.3km 참가 신청서 입니다. 참가비용은 59,000원 입니다.</li>
-					<li>허위 작성 시 참가 신청이 취소 될 수 있습니다.</li>
-					<li>
-						이름, 생년월일 6자리, 연락처, 상세주소, 성별, 이메일을 꼭 기입 해 주시길 바랍니다. <br />
-						(잘못기제, 미기제 시 기념품 및 사진 수령이 어려울 수 있습니다)
-					</li>
-					<li>입금 계좌 : 농협 301-0270-6460-51 / 지리산씨 협동조합</li>
-					<li>참가 신청 내역과 입금 확인 후 3일 이내 참가 신청 확정 안내 문자 드립니다.</li>
-				</ul>
+				</div>
+			</fieldset>
+			<div className='refer'>
+				<sub>※ SIZE: S(85), M(90), L(95), XL(100), XXL(110), XXXL(120)</sub>
 			</div>
-		</div>
+			{isVolunteer && (
+				<>
+					<span>
+						<label htmlFor='motivation'>참여동기(motivation)</label>
+						<input
+							ref={setRef_elements}
+							type='text'
+							name='motivation'
+							id='motivation'
+							placeholder='Leave your motivation'
+							required
+						/>
+					</span>
+					<span>
+						<label htmlFor='motivation'>원하는 분야(desired sector))</label>
+						<input
+							ref={setRef_elements}
+							type='text'
+							name='sector'
+							id='sector'
+							placeholder='Leave your desired sector'
+							required
+						/>
+					</span>
+					<fieldset>
+						<legend>숙소이용여부(accommodation)</legend>
+						<div className='radioBtn'>
+							{accommList.map((data, idx) => {
+								return (
+									<label key={idx}>
+										<input
+											ref={setRef_elements}
+											type='radio'
+											name='accommodation'
+											value={data}
+											defaultChecked={idx == 0 ? 'true' : ''}
+										/>{' '}
+										{data}
+									</label>
+								);
+							})}
+						</div>
+					</fieldset>
+				</>
+			)}
+			{children}
+			<nav className='btnSet'>
+				<input type='reset' value='Cancel' />
+				<input type='submit' value='Send' />
+			</nav>
+		</form>
 	);
 }

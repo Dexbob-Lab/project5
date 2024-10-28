@@ -8,6 +8,7 @@ import Course1 from '../pagesubs/Course1';
 import Course2 from '../pagesubs/Course2';
 import Application1 from '../pagesubs/Application1';
 import Application2 from '../pagesubs/Application2';
+import Application3 from '../pagesubs/Application3';
 
 export const TYPE = {
 	HOME: '0HOME',
@@ -57,15 +58,22 @@ export const MENU = [
 	{
 		name: 'application1',
 		path: '/application/application1',
-		text: { en: 'Course (21.2km)', kr: '코스 (21.2km)' },
+		text: { en: 'Course(21.2km)', kr: '코스(21.2km)' },
 		page: Application1,
 		type: TYPE.SUB
 	},
 	{
 		name: 'application2',
 		path: '/application/application2',
-		text: { en: 'Course (12.61km)', kr: '코스 (12.61km)' },
+		text: { en: 'Course(12.61km)', kr: '코스(12.61km)' },
 		page: Application2,
+		type: TYPE.SUB
+	},
+	{
+		name: 'application3',
+		path: '/application/application3',
+		text: { en: 'Volunteer', kr: '자원봉사' },
+		page: Application3,
 		type: TYPE.SUB
 	}
 ];

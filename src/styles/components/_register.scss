@@ -1,130 +1,112 @@
 @use '../variables' as *;
 
-.register {
+form {
 	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	margin: 20px 0px;
+	padding-right: 3vw;
 
-	form {
-		width: 55%;
-		border-right: 1px solid #bbb;
-		padding-right: 3vw;
+	span {
+		width: 100%;
+		display: block;
 
-		span {
-			width: 100%;
-			display: block;
-
-			label {
-				width: 48%;
-				display: inline-block;
-				font: 500 1rem/1 'Orbitron';
-				color: #333;
-				margin-bottom: 20px;
-			}
-			input {
-				width: 50%;
-				border: none;
-				border-bottom: 1px solid #888;
-				padding: 10px 5px;
-				background: transparent;
-				resize: none;
-
-				//placeholer 요소 안쪽의 텍스트 스타일링
-				&::placeholder {
-					color: rgba(var(--keyRGB), 0.6);
-					font: 400 0.8rem/1.2 'raleway';
-				}
-			}
+		label {
+			width: 48%;
+			display: inline-block;
+			font: 500 1rem/1 'Orbitron';
+			color: #333;
+			margin-bottom: 20px;
 		}
-
-		fieldset {
-			font: 500 1rem/1 'Orbit';
-			letter-spacing: 3px;
+		input {
+			width: 50%;
 			border: none;
-			margin: 5px;
-			display: flex;
-			justify-content: flex-end;
-			align-items: center;
-			gap: 20px;
+			border-bottom: 1px solid #888;
+			padding: 10px 5px;
+			background: transparent;
+			resize: none;
 
-			label {
-				margin: 10px 0;
-				font: 500 0.8rem/1 'Orbitron';
-				color: #333;
-			}
-		}
-
-		.btnSet {
-			display: flex;
-			gap: 5px;
-
-			input {
-				cursor: pointer;
-				display: inline-block;
-				padding: 10px 20px;
-				font: 300 0.6rem/1 'orbitron';
-				letter-spacing: 1px;
-				color: #fff;
-				background: rgba(var(--keyRGB), 0.8);
-				box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
-				border-radius: 3px;
-				border: none;
+			//placeholer 요소 안쪽의 텍스트 스타일링
+			&::placeholder {
+				color: rgba(var(--keyRGB), 0.6);
+				font: 400 0.8rem/1.2 'raleway';
 			}
 		}
 	}
 
-	.info {
-		width: 40%;
+	fieldset {
+		font: 500 1rem/1 'Orbit';
+		letter-spacing: 3px;
+		border: none;
+		margin-bottom: 10px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 20px;
+		div {
+			margin: 10px 0 10px 15%;
 
-		h2 {
-			font: 500 2rem/1 'orbitron';
-			letter-spacing: 1px;
-			color: #444;
-			margin-bottom: 30px;
-		}
-		ul {
-			font: 0.8rem/1.3 'arial';
-			color: #777;
-			li {
-				list-style-type: disc;
-				margin-bottom: 20px;
+			label {
+				margin: 8px;
+				font: 500 0.8rem/1.2 'arial';
+				color: #333;
 			}
+		}
+	}
+
+	.refer {
+		width: 100%;
+		color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 30px;
+	}
+
+	.btnSet {
+		display: flex;
+		gap: 20px;
+
+		input {
+			cursor: pointer;
+			display: inline-block;
+			padding: 10px 20px;
+			font: 300 0.6rem/1 'orbitron';
+			letter-spacing: 1px;
+			color: #fff;
+			background: rgba(var(--keyRGB), 0.8);
+			box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
+			border-radius: 3px;
+			border: none;
 		}
 	}
 }
 
 @media screen and (max-width: $tablet) {
-	.register {
-		form {
+	form {
+		width: 100%;
+		padding-right: 0;
+		padding-bottom: 50px;
+		border-right: none;
+		border-bottom: 1px solid #bbb;
+
+		span {
 			width: 100%;
-			padding-right: 0;
-			padding-bottom: 50px;
-			border-right: none;
-			border-bottom: 1px solid #bbb;
 
-			span {
+			label {
 				width: 100%;
-
-				label {
-					width: 100%;
-					margin-bottom: 5px;
-				}
-				input {
-					width: 80%;
-					margin: 10px 5% 30px 20%;
-				}
+				margin-bottom: 5px;
+			}
+			input {
+				width: 80%;
+				margin: 10px 5% 30px 20%;
 			}
 		}
 
-		.info {
-			width: 100%;
-			margin-top: 50px;
-
-			ul {
-				padding-left: 20px;
+		fieldset {
+			label {
+				margin: 10px 10 10px 10px;
 			}
+		}
+
+		.refer {
+			margin-bottom: 30px 10px 30px 10px;
 		}
 	}
 }

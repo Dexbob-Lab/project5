@@ -1,0 +1,55 @@
+@use '../variables' as *;
+
+.appliBox {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 10px 0px;
+
+	.regForm {
+		width: 55%;
+		border-right: 1px solid #bbb;
+	}
+
+	.regInfo {
+		width: 40%;
+		margin-top: 5%;
+
+		h2 {
+			font: 500 2rem/1 'orbitron';
+			letter-spacing: 1px;
+			color: #444;
+			margin-bottom: 30px;
+		}
+		ul {
+			font: 0.8rem/1.3 'arial';
+			color: #777;
+			li {
+				list-style-type: disc;
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.appliBox {
+		.regForm {
+			width: 100%;
+			border-right: none;
+			order: 2;
+		}
+
+		.regInfo {
+			width: 100%;
+			margin: 50px 0;
+			border-bottom: 1px solid #bbb;
+			order: 1;
+
+			ul {
+				padding-left: 20px;
+			}
+		}
+	}
+}
