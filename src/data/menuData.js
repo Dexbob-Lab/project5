@@ -82,28 +82,28 @@ export const MENU = [
 	},
 	{
 		name: 'notices',
-		path: '/communication/notices',
+		path: '/communication/communication1',
 		text: { en: 'Notices', kr: '공지사항' },
 		page: Communication1,
 		type: TYPE.SUB
 	},
 	{
 		name: 'questions',
-		path: '/communication/questions',
+		path: '/communication/communication2',
 		text: { en: 'Questions', kr: '문의사항' },
 		page: Communication2,
 		type: TYPE.SUB
 	},
 	{
 		name: 'photogallery',
-		path: '/communication/photogallery',
+		path: '/communication/communication3',
 		text: { en: 'Photo Gallery', kr: '포토 갤러리' },
 		page: Communication3,
 		type: TYPE.SUB
 	},
 	{
 		name: 'videogallery',
-		path: '/communication/videogallery',
+		path: '/communication/communication4',
 		text: { en: 'Video Gallery', kr: '동영상 갤러리' },
 		page: Communication4,
 		type: TYPE.SUB
