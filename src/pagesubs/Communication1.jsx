@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Layout from '../layouts/Layout';
+// import Layout from '../layouts/Layout';
 import Modal from '../components/Modal';
 import useGlobalData from '../hooks/useGlobalData';
-import useDatetimeText from '../hooks/useDatetimeText';
+// import useDatetimeText from '../hooks/useDatetimeText';
+import Board from '../components/Board';
 // import { fetchAllNotice } from '../hooks/useServerData';
 
 export default function Communication1() {
@@ -11,10 +12,15 @@ export default function Communication1() {
 	const [Notice, setNotice] = useState([]);
 	const [Search, setSearch] = useState('');
 	const [Index, setIndex] = useState(-1);
-	const datetimeText = useDatetimeText();
+	// const datetimeText = useDatetimeText();
 	// const fetchAll = fetchAllNotice();
 
 	const baseUrl = import.meta.env.VITE_BOARD_URL;
+
+	const boardClickEvent = idx => {
+		toggleNoticeModal();
+		setIndex(idx);
+	};
 
 	const handleSearch = e => {
 		e.preventDefault();
@@ -27,62 +33,32 @@ export default function Communication1() {
 	}, []);
 
 	useEffect(() => {
-		if (!Search) return;
-		axios
-			.get(`${baseUrl}/notice-search/?search=${Search}`)
-			.then(res => {
-				setNotice(res.data);
-			})
-			.catch(err => console.log(err.message));
+		Search
+			? fetchAllNotice(`${baseUrl}/notice-search/?search=${Search}`, setNotice)
+			: fetchAllNotice(`${baseUrl}/notice/`, setNotice);
 	}, [Search]);
 
 	return (
 		<>
-			<div className='noticeTable'>
-				{/* <button>
-					<Link to={`/posts-add`}>WRITE POST</Link>
-				</button> */}
+			<Board data={Notice} clickEvent={boardClickEvent}>
 				<form className='searchBox' onSubmit={handleSearch}>
-					<input type='text' />
-					<button>Search</button>
+					<div>
+						<input type='text' placeholder='enter a search word.' />
+						<input type='submit' value='Search' />
+					</div>
+					<input type='button' value='Insert' />
 				</form>
-				<table>
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제 목</th>
-							<th>닉네임</th>
-							<th>등록일</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						{Notice?.map((data, idx) => {
-							return (
-								<tr
-									key={idx}
-									onClick={() => {
-										toggleNoticeModal();
-										setIndex(idx);
-									}}>
-									<td>{data.id}</td>
-									<td>{data.title}</td>
-									<td>{data.nickname}</td>
-									<td>{datetimeText(data.updated)}</td>
-									<td>{data.view_count}</td>
-								</tr>
-							);
-						})}
-					</tbody>
-				</table>
-			</div>
+			</Board>
 			{NoticeFlg && <Modal closeFunc={toggleNoticeModal}>공지사항 검색({Index})</Modal>}
 		</>
 	);
 }
 
 const fetchAllNotice = (url, setFunc) => {
-	axios.get(url).then(res => {
-		setFunc(res.data);
-	});
+	axios
+		.get(url)
+		.then(res => {
+			setFunc(res.data);
+		})
+		.catch(err => console.log(err.message));
 };

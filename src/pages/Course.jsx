@@ -19,7 +19,7 @@ export default function Course() {
 
 	return (
 		<Layout className={CurrObject?.name}>
-			<nav className='subMenu'>
+			<nav className='sourseSubMenu'>
 				<div className='pageName'>{CurrObject?.text[Lang]}</div>
 				<div className='menuBtn'>
 					<button onClick={() => moveSubPages(c1)}>{c1.text[Lang]}</button>

@@ -19,7 +19,7 @@ export default function Application() {
 
 	return (
 		<Layout className={CurrObject?.name}>
-			<nav className='subMenu'>
+			<nav className='applicationSubMenu'>
 				<div className='pageName'>{CurrObject?.text[Lang]}</div>
 				<div className='menuBtn'>
 					<button onClick={() => moveSubPages(a1)}>{a1?.text[Lang]}</button>

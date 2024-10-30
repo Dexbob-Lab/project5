@@ -6,26 +6,30 @@ import { useEffect, useState } from 'react';
 export default function Communication() {
 	const { Lang, setCurrObject, CurrObject } = useGlobalData();
 	const [c1, c2, c3, c4] = getMenuByNames(['notices', 'questions', 'photogallery', 'videogallery']);
-	const [SubPage, setSubPage] = useState(null);
+	const [SubPage, setSubPage] = useState(c1);
 
 	const moveSubPages = obj => {
 		setCurrObject(obj);
 		setSubPage(obj);
 	};
 
+	// useEffect(() => {
+	// 	moveSubPages(c1);
+	// }, []);
+
 	useEffect(() => {
-		moveSubPages(c1);
-	}, []);
+		moveSubPages(SubPage);
+	}, [SubPage]);
 
 	return (
 		<Layout className={CurrObject?.name}>
-			<nav className='subMenu'>
+			<nav className='communicationSubMenu'>
 				<div className='pageName'>{CurrObject?.text[Lang]}</div>
 				<div className='menuBtn'>
-					<button onClick={() => moveSubPages(c1)}>{c1?.text[Lang]}</button>
-					<button onClick={() => moveSubPages(c2)}>{c2?.text[Lang]}</button>
-					<button onClick={() => moveSubPages(c3)}>{c3?.text[Lang]}</button>
-					<button onClick={() => moveSubPages(c4)}>{c4?.text[Lang]}</button>
+					<button onClick={() => setSubPage(c1)}>{c1?.text[Lang]}</button>
+					<button onClick={() => setSubPage(c2)}>{c2?.text[Lang]}</button>
+					<button onClick={() => setSubPage(c3)}>{c3?.text[Lang]}</button>
+					<button onClick={() => setSubPage(c4)}>{c4?.text[Lang]}</button>
 				</div>
 			</nav>
 			{SubPage && <SubPage.page />}

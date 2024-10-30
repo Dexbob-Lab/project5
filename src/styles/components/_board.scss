@@ -1,0 +1,75 @@
+.board {
+	width: 100%;
+	margin-top: 20px;
+
+	table {
+		width: 100%;
+		background: whitesmoke;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+		border-radius: 5px;
+		border-collapse: collapse;
+		animation: float 5s infinite;
+
+		thead > tr > th {
+			font: 700 1rem/1;
+			color: #eee;
+			text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+			text-align: center;
+			vertical-align: middle;
+			background: #555;
+			border-bottom: 4px solid #9ea7af;
+			padding: 10px;
+
+			&:first-child {
+				border-top-left-radius: 3px;
+			}
+
+			&:last-child {
+				border-top-right-radius: 3px;
+				border-right: none;
+			}
+
+			&:nth-of-type(2) {
+				width: 40vw;
+			}
+		}
+
+		tbody {
+			tr {
+				cursor: pointer;
+				padding: 20px;
+				color: #666;
+				font: 400 0.8rem/1 arial;
+				text-align: center;
+				text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+				border-bottom: 1px solid #c1c3d1;
+
+				td {
+					padding: 10px;
+
+					&:nth-of-type(2) {
+						text-align: left;
+					}
+				}
+
+				&:nth-child(odd) td {
+					background: #ebebeb;
+				}
+
+				&:last-child td:first-child {
+					border-bottom-left-radius: 3px;
+				}
+
+				&:last-child td:last-child {
+					border-bottom-right-radius: 3px;
+				}
+
+				&:hover td {
+					background: #4e5066;
+					color: #ffffff;
+					border-top: 1px solid #22262e;
+				}
+			}
+		}
+	}
+}
