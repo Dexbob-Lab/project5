@@ -2,9 +2,9 @@ import { useState } from 'react';
 import Layout from '../layouts/Layout';
 import Pic from '../components/Pic';
 import Modal from '../components/Modal';
-import useCombineText from '../hooks/useCombineText';
 import useGlobalData from '../hooks/useGlobalData';
 import useShortenText from '../hooks/useShortenText';
+import useCombineText from '../hooks/useCombineText';
 import useYoutubeQuery from '../hooks/useYoutube';
 
 export default function Communication4() {

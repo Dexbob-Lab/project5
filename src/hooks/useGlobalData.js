@@ -5,11 +5,13 @@ const useGlobalData = create(set => ({
 	CurrObject: undefined,
 	SideMenuFlg: false,
 	YoutubeFlg: false,
+	NoticeFlg: false,
 	SetLang: lang => set({ Lang: lang }),
 	setCurrObject: obj => set({ CurrObject: obj }),
 	closeSideMenu: () => set({ SideMenuFlg: false }),
 	toggleSideMenu: () => set(state => ({ SideMenuFlg: !state.SideMenuFlg })),
-	toggleYoutubeModal: () => set(state => ({ YoutubeFlg: !state.YoutubeFlg }))
+	toggleYoutubeModal: () => set(state => ({ YoutubeFlg: !state.YoutubeFlg })),
+	toggleNoticeModal: () => set(state => ({ NoticeFlg: !state.NoticeFlg }))
 }));
 
 export default useGlobalData;
