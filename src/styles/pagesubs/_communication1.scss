@@ -18,12 +18,8 @@
 		padding: 5px 5px;
 		background: transparent;
 		resize: none;
-
-		&::placeholder {
-			color: rgba(var(--keyRGB), 0.6);
-			font: 400 0.8rem/1.2 'raleway';
-		}
 	}
+
 	input[type='button'],
 	input[type='submit'] {
 		cursor: pointer;
@@ -48,10 +44,9 @@
 	aside {
 		width: 30ww;
 		height: 30vh;
-		background: #bbb;
+		background: #ccc;
+		box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.1);
 		border-radius: 10px;
-		box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
-		border: none;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
@@ -59,32 +54,28 @@
 		gap: 30px;
 
 		div {
-			width: 60%;
+			width: 50%;
 		}
+
 		input[type='password'] {
-			width: 60%;
+			width: 50%;
 			border: none;
 			border-bottom: 1px solid #888;
 			padding: 5px 5px;
 			background: transparent;
 			resize: none;
-
-			&::placeholder {
-				color: rgba(var(--keyRGB), 0.6);
-				font: 400 0.8rem/1.2 'raleway';
-			}
 		}
+
 		input[type='submit'] {
-			width: 60%;
-			height: 30px;
+			width: 50%;
 			cursor: pointer;
 			display: inline-block;
-			padding: 5px 30px;
+			padding: 10px 10px;
 			font: 500 0.6rem/1 'orbitron';
 			letter-spacing: 1px;
 			color: #fff;
 			background: rgba(var(--keyRGB), 0.8);
-			box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
+			box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.1);
 			border-radius: 3px;
 			border: none;
 		}

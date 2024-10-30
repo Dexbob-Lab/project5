@@ -19,9 +19,16 @@ export default function Communication1() {
 		Notice[idx].is_lock ? toggleNoticeLockModal() : toggleNoticeModal();
 	};
 
+	const noticeClickEvent = () => {
+		toggleNoticeModal();
+		setSearch(Search + ' ');
+	};
+
 	const handleSearch = e => {
 		e.preventDefault();
-		setSearch(e.target[0].value);
+		// 빈 값을 넣었을때도 리로딩하여 검색을 시키기 위해 값을 변동시켜줌
+		const search = e.target[0].value.trim() ? e.target[0].value : Search.trim() ? '' : Search + ' ';
+		setSearch(search);
 		e.target[0].value = '';
 	};
 
@@ -77,7 +84,7 @@ export default function Communication1() {
 			)}
 			{NoticeFlg && (
 				<Modal closeFunc={toggleNoticeModal}>
-					<BoardDetail data={Notice} clickEvent={boardClickEvent}></BoardDetail>
+					<BoardDetail data={Notice[Index]} clickEvent={noticeClickEvent}></BoardDetail>
 				</Modal>
 			)}
 		</>

@@ -21,7 +21,6 @@ export default function Communication() {
 	// }, []);
 
 	useEffect(() => {
-		console.log('22222>>>', SubPage);
 		setCurrObject(SubPage);
 	}, [SubPage]);
 
