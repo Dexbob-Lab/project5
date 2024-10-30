@@ -16,12 +16,13 @@ export default function Communication1() {
 
 	const boardClickEvent = idx => {
 		setIndex(idx);
-		Notice[idx].is_lock ? toggleNoticeLockModal() : toggleNoticeModal();
+		Notice[idx].lockon ? toggleNoticeLockModal() : toggleNoticeModal();
 	};
 
 	const noticeClickEvent = () => {
 		toggleNoticeModal();
 		setSearch(Search + ' ');
+		setIndex(-1);
 	};
 
 	const handleSearch = e => {
@@ -65,7 +66,7 @@ export default function Communication1() {
 						<input type='text' placeholder='enter a search word.' />
 						<input type='submit' value='Search' />
 					</div>
-					<input type='button' value='Insert' />
+					<input type='button' value='Write' onClick={noticeClickEvent} />
 				</form>
 			</Board>
 			{NoticeLockFlg && (
@@ -83,8 +84,8 @@ export default function Communication1() {
 				</Modal>
 			)}
 			{NoticeFlg && (
-				<Modal closeFunc={toggleNoticeModal}>
-					<BoardDetail data={Notice[Index]} clickEvent={noticeClickEvent}></BoardDetail>
+				<Modal closeFunc={noticeClickEvent}>
+					<BoardDetail data={Index < 0 ? {} : Notice[Index]} clickEvent={noticeClickEvent}></BoardDetail>
 				</Modal>
 			)}
 		</>

@@ -1,6 +1,6 @@
 main {
 	width: 100%;
-	padding: 5vh 10vw;
+	padding: 5vh 5vw;
 	min-height: 70vh;
 	background: #ddd;
 	display: flex;
@@ -9,6 +9,7 @@ main {
 
 	section {
 		width: 100%;
+		min-width: 400px;
 	}
 
 	// .main {

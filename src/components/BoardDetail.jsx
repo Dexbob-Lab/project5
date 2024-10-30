@@ -1,20 +1,58 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import useDatetimeText from '../hooks/useDatetimeText';
 import axios from 'axios';
 
 export default function BoradDetail({ data = {}, clickEvent }) {
-	// const [Notice, setNotice] = useState([]);
 	const ref_nickname = useRef(null);
 	const ref_password = useRef(null);
 	const ref_title = useRef(null);
 	const ref_contents = useRef(null);
-	const ref_is_lock = useRef(null);
+	const ref_lockon = useRef(null);
 	const datetimeText = useDatetimeText();
+
 	const baseUrl = import.meta.env.VITE_BOARD_URL;
+
+	const isInsertForm = () => {
+		// 데이터가 존재하면 수정/삭제, 비어있으면 등록
+		for (let key in data) {
+			return false;
+		}
+		return true;
+	};
+	const checkRequired = () => {
+		const target = [ref_nickname, ref_title, ref_contents, ref_password];
+		const idx = target.findIndex(data => !data.current.value.trim());
+		return idx < 0;
+	};
+	const handleInsert = () => {
+		if (!checkRequired()) {
+			alert('전 항목 필수 입력 입니다.');
+			return;
+		}
+		if (!confirm('게시글을 등록하시겠습니까?')) return;
+		const insertData = {
+			nickname: ref_nickname.current.value,
+			password: ref_password.current.value,
+			title: ref_title.current.value,
+			contents: ref_contents.current.value,
+			lockon: ref_lockon.current.checked
+		};
+		axios
+			.post(`${baseUrl}/notice/`, insertData)
+			.then(res => {
+				console.log(res);
+				clickEvent();
+			})
+			.catch(err => console.log(err));
+	};
 
 	const handleUpdate = () => {
 		if (ref_password.current.value !== data.password) {
 			alert('비밀번호가 일치하지 않습니다.');
+			return;
+		}
+		if (!checkRequired()) {
+			alert('전 항목 필수 입력 입니다.');
 			return;
 		}
 		if (!confirm('게시글을 수정하시겠습니까?')) return;
@@ -24,8 +62,7 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 			password: ref_password.current.value,
 			title: ref_title.current.value,
 			contents: ref_contents.current.value,
-			is_lock: ref_is_lock.current.checked,
-			view_count: data.view_count
+			lockon: ref_lockon.current.checked
 		};
 		axios
 			.put(`${baseUrl}/notice/${data.id}/`, updateData)
@@ -52,8 +89,18 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 	};
 
 	useEffect(() => {
-		// 	axios.get(`http://localhost:8000/posts/${slug}`).then(res => setPost(res.data));
-		console.log(data);
+		if (!isInsertForm()) {
+			const updateData = {
+				id: data.id,
+				hits: data.hits + 1
+			};
+			axios
+				.put(`${baseUrl}/notice-hits/${data.id}/`, updateData)
+				.then(res => {
+					console.log(res);
+				})
+				.catch(err => console.log(err));
+		}
 	}, []);
 
 	return (
@@ -106,28 +153,29 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 						/>
 					</li>
 					<li>
-						<label htmlFor='is_lock'>비밀글지정</label>
+						<label htmlFor='lockon'>비밀글지정</label>
 						<input
-							ref={ref_is_lock}
+							ref={ref_lockon}
 							type='checkbox'
-							name='is_lock'
-							id='is_lock'
-							defaultChecked={data?.is_lock ? 'checked' : ''}
+							name='lockon'
+							id='lockon'
+							defaultChecked={data?.lockon ? 'checked' : ''}
 						/>
 					</li>
-					<li>
+					<li className={isInsertForm() ? 'hide' : ''}>
 						<label>갱신일</label>
 						{datetimeText(data?.updated)}
 					</li>
-					<li>
+					<li className={isInsertForm() ? 'hide' : ''}>
 						<label>등록일</label>
 						{datetimeText(data?.created)}
 					</li>
 				</ul>
 				<div className='btnBox'>
 					<input type='reset' value='Initailize' />
-					<input type='button' onClick={handleUpdate} value='Update' />
-					<input type='button' onClick={handleDelete} value='Delete' />
+					{!isInsertForm() && <input type='button' onClick={handleDelete} value='Delete' />}
+					{!isInsertForm() && <input type='button' onClick={handleUpdate} value='Update' />}
+					{isInsertForm() && <input type='button' onClick={handleInsert} value='Insert' />}
 				</div>
 			</form>
 		</div>

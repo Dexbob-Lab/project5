@@ -26,6 +26,7 @@
 			label {
 				width: 20%;
 				min-width: 80px;
+				max-width: 150px;
 			}
 
 			input[type='checkbox'] {
@@ -37,7 +38,7 @@
 			textarea,
 			input[type='password'],
 			input[type='text'] {
-				width: 60%;
+				width: 70%;
 				background: transparent;
 				border: none;
 				border-bottom: 1px solid #888;
@@ -72,6 +73,24 @@
 			box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
 			border-radius: 3px;
 			border: none;
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.modal {
+		padding: 10vh 5vw;
+
+		.btnClose {
+			right: 5vw;
+
+			.mark1 {
+				display: none;
+			}
+			.mark2 {
+				font-size: 2rem;
+				display: block;
+			}
 		}
 	}
 }

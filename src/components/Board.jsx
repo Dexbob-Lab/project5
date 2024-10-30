@@ -24,11 +24,11 @@ export default function Borad({ children, data = [], clickEvent }) {
 								<td>{data.id}</td>
 								<td>
 									{`${data.title} `}
-									{data.is_lock ? <FaLock /> : ''}
+									{data.lockon ? <FaLock /> : ''}
 								</td>
 								<td>{data.nickname}</td>
 								<td>{datetimeText(data.updated)}</td>
-								<td>{data.view_count}</td>
+								<td>{data.hits}</td>
 							</tr>
 						);
 					})}

@@ -9,17 +9,6 @@ export default function Communication() {
 	const [c1, c2, c3, c4] = getMenuByNames(subMenus);
 	const [SubPage, setSubPage] = useState(c1);
 
-	// useEffect(() => {
-	// 	console.log('sub>>>', CurrObject.name);
-	// 	console.log('sub>>>', subMenus);
-	// 	console.log(
-	// 		'sub>>>',
-	// 		subMenus.findIndex(menu => menu === CurrObject.name)
-	// 	);
-
-	// 	subMenus.findIndex(menu => menu === CurrObject.name) < 0 ? setSubPage(c1) : setSubPage(CurrObject);
-	// }, []);
-
 	useEffect(() => {
 		setCurrObject(SubPage);
 	}, [SubPage]);
