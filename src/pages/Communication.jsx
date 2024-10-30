@@ -5,20 +5,24 @@ import { useEffect, useState } from 'react';
 
 export default function Communication() {
 	const { Lang, setCurrObject, CurrObject } = useGlobalData();
-	const [c1, c2, c3, c4] = getMenuByNames(['notices', 'questions', 'photogallery', 'videogallery']);
+	const subMenus = ['notices', 'questions', 'photogallery', 'videogallery'];
+	const [c1, c2, c3, c4] = getMenuByNames(subMenus);
 	const [SubPage, setSubPage] = useState(c1);
 
-	const moveSubPages = obj => {
-		setCurrObject(obj);
-		setSubPage(obj);
-	};
-
 	// useEffect(() => {
-	// 	moveSubPages(c1);
+	// 	console.log('sub>>>', CurrObject.name);
+	// 	console.log('sub>>>', subMenus);
+	// 	console.log(
+	// 		'sub>>>',
+	// 		subMenus.findIndex(menu => menu === CurrObject.name)
+	// 	);
+
+	// 	subMenus.findIndex(menu => menu === CurrObject.name) < 0 ? setSubPage(c1) : setSubPage(CurrObject);
 	// }, []);
 
 	useEffect(() => {
-		moveSubPages(SubPage);
+		console.log('22222>>>', SubPage);
+		setCurrObject(SubPage);
 	}, [SubPage]);
 
 	return (

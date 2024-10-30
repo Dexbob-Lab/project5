@@ -1,3 +1,4 @@
+import { FaLock } from 'react-icons/fa';
 import useDatetimeText from '../hooks/useDatetimeText';
 
 export default function Borad({ children, data = [], clickEvent }) {
@@ -21,7 +22,10 @@ export default function Borad({ children, data = [], clickEvent }) {
 						return (
 							<tr key={idx} onClick={() => clickEvent(idx)}>
 								<td>{data.id}</td>
-								<td>{data.title}</td>
+								<td>
+									{`${data.title} `}
+									{data.is_lock ? <FaLock /> : ''}
+								</td>
 								<td>{data.nickname}</td>
 								<td>{datetimeText(data.updated)}</td>
 								<td>{data.view_count}</td>

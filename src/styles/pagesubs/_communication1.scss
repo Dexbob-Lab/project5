@@ -38,3 +38,55 @@
 		border: none;
 	}
 }
+
+.passwordBox {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	aside {
+		width: 30ww;
+		height: 30vh;
+		background: #bbb;
+		border-radius: 10px;
+		box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
+		border: none;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		gap: 30px;
+
+		div {
+			width: 60%;
+		}
+		input[type='password'] {
+			width: 60%;
+			border: none;
+			border-bottom: 1px solid #888;
+			padding: 5px 5px;
+			background: transparent;
+			resize: none;
+
+			&::placeholder {
+				color: rgba(var(--keyRGB), 0.6);
+				font: 400 0.8rem/1.2 'raleway';
+			}
+		}
+		input[type='submit'] {
+			width: 60%;
+			height: 30px;
+			cursor: pointer;
+			display: inline-block;
+			padding: 5px 30px;
+			font: 500 0.6rem/1 'orbitron';
+			letter-spacing: 1px;
+			color: #fff;
+			background: rgba(var(--keyRGB), 0.8);
+			box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
+			border-radius: 3px;
+			border: none;
+		}
+	}
+}

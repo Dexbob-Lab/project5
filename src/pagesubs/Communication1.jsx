@@ -1,25 +1,22 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-// import Layout from '../layouts/Layout';
 import Modal from '../components/Modal';
 import useGlobalData from '../hooks/useGlobalData';
-// import useDatetimeText from '../hooks/useDatetimeText';
 import Board from '../components/Board';
-// import { fetchAllNotice } from '../hooks/useServerData';
+import BoardDetail from '../components/BoardDetail';
 
 export default function Communication1() {
-	const { NoticeFlg, CurrObject, toggleNoticeModal } = useGlobalData();
+	const { NoticeFlg, NoticeLockFlg, toggleNoticeModal, toggleNoticeLockModal } = useGlobalData();
 	const [Notice, setNotice] = useState([]);
 	const [Search, setSearch] = useState('');
+	const [Password, setPassword] = useState(null);
 	const [Index, setIndex] = useState(-1);
-	// const datetimeText = useDatetimeText();
-	// const fetchAll = fetchAllNotice();
 
 	const baseUrl = import.meta.env.VITE_BOARD_URL;
 
 	const boardClickEvent = idx => {
-		toggleNoticeModal();
 		setIndex(idx);
+		Notice[idx].is_lock ? toggleNoticeLockModal() : toggleNoticeModal();
 	};
 
 	const handleSearch = e => {
@@ -28,15 +25,30 @@ export default function Communication1() {
 		e.target[0].value = '';
 	};
 
-	useEffect(() => {
-		fetchAllNotice(`${baseUrl}/notice/`, setNotice);
-	}, []);
+	const handlePassword = e => {
+		e.preventDefault();
+		setPassword(e.target[0].value);
+		e.target[0].value = '';
+	};
 
 	useEffect(() => {
 		Search
 			? fetchAllNotice(`${baseUrl}/notice-search/?search=${Search}`, setNotice)
 			: fetchAllNotice(`${baseUrl}/notice/`, setNotice);
 	}, [Search]);
+
+	useEffect(() => {
+		Password &&
+			fetchAllNotice(`${baseUrl}/notice-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
+				setPassword(null);
+				if (res.data) {
+					toggleNoticeLockModal();
+					toggleNoticeModal();
+				} else {
+					alert('비밀번호가 일치하지 않습니다.');
+				}
+			});
+	}, [Password]);
 
 	return (
 		<>
@@ -49,16 +61,38 @@ export default function Communication1() {
 					<input type='button' value='Insert' />
 				</form>
 			</Board>
-			{NoticeFlg && <Modal closeFunc={toggleNoticeModal}>공지사항 검색({Index})</Modal>}
+			{NoticeLockFlg && (
+				<Modal closeFunc={toggleNoticeLockModal}>
+					<form className='passwordBox' onSubmit={handlePassword}>
+						<aside>
+							<div>
+								비밀글 입니다. <br />
+								비밀번호를 입력해 주세요.
+							</div>
+							<input type='password' placeholder='enter your password.' required />
+							<input type='submit' value='Password' />
+						</aside>
+					</form>
+				</Modal>
+			)}
+			{NoticeFlg && (
+				<Modal closeFunc={toggleNoticeModal}>
+					<BoardDetail data={Notice} clickEvent={boardClickEvent}></BoardDetail>
+				</Modal>
+			)}
 		</>
 	);
 }
 
-const fetchAllNotice = (url, setFunc) => {
+const fetchAllNotice = (url, setFunc, thenFunc = undefined, catchFunc = undefined) => {
 	axios
 		.get(url)
 		.then(res => {
-			setFunc(res.data);
+			setFunc && setFunc(res.data);
+			thenFunc && thenFunc(res);
 		})
-		.catch(err => console.log(err.message));
+		.catch(err => {
+			console.log(err.message);
+			catchFunc && catchFunc(err);
+		});
 };

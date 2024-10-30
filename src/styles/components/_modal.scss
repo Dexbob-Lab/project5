@@ -12,31 +12,39 @@
 	.contents {
 		width: 100%;
 		height: 100%;
-
-		.vidFrame {
-			width: 100%;
-			height: 60vh;
-			overflow: hidden;
-			margin-bottom: 40px;
-
-			iframe {
-				border: 0;
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
 	}
 
 	.btnClose {
+		cursor: pointer;
 		border: none;
 		background: transparent;
-		font: 600 0.8rem/1 'orbitron';
+		font: 700 1.5rem/1 'orbitron';
 		letter-spacing: 1px;
 		color: rgba(var(--keyRGB), 1);
+		vertical-align: top;
 		position: absolute;
 		top: 4vh;
-		right: 3vw;
-		cursor: pointer;
+		right: 5vh;
+
+		.mark2 {
+			font: 900 1.6rem/1 'Jua';
+			display: none;
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.modal {
+		.btnClose {
+			right: 5vw;
+
+			.mark1 {
+				display: none;
+			}
+			.mark2 {
+				font-size: 2rem;
+				display: block;
+			}
+		}
 	}
 }
