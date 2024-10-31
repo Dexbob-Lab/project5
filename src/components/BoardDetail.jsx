@@ -2,15 +2,13 @@ import { useEffect, useRef } from 'react';
 import useDatetimeText from '../hooks/useDatetimeText';
 import axios from 'axios';
 
-export default function BoradDetail({ data = {}, clickEvent }) {
+export default function BoradDetail({ baseUrl, data = {}, clickEvent }) {
 	const ref_nickname = useRef(null);
 	const ref_password = useRef(null);
 	const ref_title = useRef(null);
 	const ref_contents = useRef(null);
 	const ref_lockon = useRef(null);
 	const datetimeText = useDatetimeText();
-
-	const baseUrl = import.meta.env.VITE_BOARD_URL;
 
 	const isInsertForm = () => {
 		// 데이터가 존재하면 수정/삭제, 비어있으면 등록
@@ -38,7 +36,7 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 			lockon: ref_lockon.current.checked
 		};
 		axios
-			.post(`${baseUrl}/notice/`, insertData)
+			.post(`${baseUrl}/`, insertData)
 			.then(res => {
 				console.log(res);
 				clickEvent();
@@ -65,7 +63,7 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 			lockon: ref_lockon.current.checked
 		};
 		axios
-			.put(`${baseUrl}/notice/${data.id}/`, updateData)
+			.put(`${baseUrl}/${data.id}/`, updateData)
 			.then(res => {
 				console.log(res);
 				clickEvent();
@@ -80,7 +78,7 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 		}
 		if (!confirm('게시글을 삭제하겠습니까?')) return;
 		axios
-			.delete(`${baseUrl}/notice/${data.id}/`)
+			.delete(`${baseUrl}/${data.id}/`)
 			.then(res => {
 				console.log(res);
 				clickEvent();
@@ -95,7 +93,7 @@ export default function BoradDetail({ data = {}, clickEvent }) {
 				hits: data.hits + 1
 			};
 			axios
-				.put(`${baseUrl}/notice-hits/${data.id}/`, updateData)
+				.put(`${baseUrl}-hits/${data.id}/`, updateData)
 				.then(res => {
 					console.log(res);
 				})

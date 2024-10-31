@@ -12,7 +12,7 @@ export default function Communication1() {
 	const [Password, setPassword] = useState(null);
 	const [Index, setIndex] = useState(-1);
 
-	const baseUrl = import.meta.env.VITE_BOARD_URL;
+	const baseUrl = import.meta.env.VITE_BOARD_URL + '/ns/notice';
 
 	const boardClickEvent = idx => {
 		setIndex(idx);
@@ -41,13 +41,13 @@ export default function Communication1() {
 
 	useEffect(() => {
 		Search
-			? fetchAllNotice(`${baseUrl}/notice-search/?search=${Search}`, setNotice)
-			: fetchAllNotice(`${baseUrl}/notice/`, setNotice);
+			? fetchAllNotice(`${baseUrl}-search/?search=${Search}`, setNotice)
+			: fetchAllNotice(`${baseUrl}/`, setNotice);
 	}, [Search]);
 
 	useEffect(() => {
 		Password &&
-			fetchAllNotice(`${baseUrl}/notice-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
+			fetchAllNotice(`${baseUrl}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
 				setPassword(null);
 				if (res.data) {
 					toggleNoticeLockModal();
@@ -85,7 +85,10 @@ export default function Communication1() {
 			)}
 			{NoticeFlg && (
 				<Modal closeFunc={noticeClickEvent}>
-					<BoardDetail data={Index < 0 ? {} : Notice[Index]} clickEvent={noticeClickEvent}></BoardDetail>
+					<BoardDetail
+						baseUrl={baseUrl}
+						data={Index < 0 ? {} : Notice[Index]}
+						clickEvent={noticeClickEvent}></BoardDetail>
 				</Modal>
 			)}
 		</>
