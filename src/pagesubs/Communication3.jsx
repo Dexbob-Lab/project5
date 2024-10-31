@@ -9,7 +9,7 @@ export default function Communication3() {
 	const ref_gallery = useRef(null);
 	const ref_search = useRef(null);
 	const [Index, setIndex] = useState(-1);
-	const [Option, setOption] = useState({ type: 'mine' });
+	const [Option, setOption] = useState({ page: 1 });
 
 	const baseUrl = 'https://live.staticflickr.com';
 
@@ -23,49 +23,67 @@ export default function Communication3() {
 		}, 500);
 	}, [Option]);
 
+	const setPageOption = page => {
+		setOption({ page: page, tags: ref_search.current.value.trim() });
+	};
+
 	const handleSearch = e => {
 		e.preventDefault();
-		if (!ref_search.current.value.trim()) return alert('검색어를 입력해 주세요.');
-		setOption({ type: 'search', tags: ref_search.current.value.trim() });
-		ref_search.current.value = '';
+		setPageOption(1);
 	};
+
+	const mouseDownEvent = e => e.target.style.setProperty('opacity', 0.8);
+	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
+
 	return (
 		<>
 			<article className='galleryBtn'>
+				<form onSubmit={handleSearch}>
+					<input ref={ref_search} type='text' placeholder='Enter a search word.' />
+					<button onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent}>
+						Search
+					</button>
+				</form>
 				<ul>
-					<li onClick={() => setOption({ type: 'mine' })} className={Option.type === 'mine' ? 'on' : ''}>
-						My Gallery
+					<li
+						onClick={() => setPageOption(Option.page > 1 ? Option.page - 1 : 1)}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}>
+						{`<< Before`}
 					</li>
-					<li onClick={() => setOption({ type: 'interest' })} className={Option.type === 'interest' ? 'on' : ''}>
-						Interest Gallery
+					<li onClick={() => setPageOption(Option.page + 1)} onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent}>
+						{`After >>`}
 					</li>
 				</ul>
-				<form onSubmit={handleSearch}>
-					<input ref={ref_search} type='text' placeholder='검색어를 입력하세요.' />
-					<button>Search</button>
-				</form>
 			</article>
 			<section ref={ref_gallery} className='galleryList'>
+				{isPending && <p>Gallery Loading...</p>}
 				{Flickr?.length === 0 && <p>검색 결과가 없습니다.</p>}
 				{Flickr?.map((data, idx) => {
 					return (
-						<article
-							key={idx}
-							onClick={() => {
-								toggleFlickrModal();
-								setIndex(idx);
-							}}>
-							<Pic className='pic' src={`${baseUrl}/${data.server}/${data.id}_${data.secret}_z.jpg`} shadow />
+						<article key={idx}>
+							<Pic
+								className='pic'
+								src={`${baseUrl}/${data.server}/${data.id}_${data.secret}_z.jpg`}
+								shadow
+								onClick={() => {
+									toggleFlickrModal();
+									setIndex(idx);
+								}}
+							/>
 							<h3>{data.title}</h3>
+							<div className='profile'>
+								<img
+									src={`http://farm${data.farm}.staticflickr.com/${data.server}/buddyicons/${data.owner}.jpg`}
+									alt='${data.owner}'
+								/>
+								<span className='userID'>${data.owner}</span>
+							</div>
 						</article>
 					);
 				})}
 			</section>
 
-			<div className='notice'>
-				<p>This web page was created for study purpose, not for commercial use.</p>
-				<p>The Images below is sourced from unplash.com</p>
-			</div>
 			{FlickrFlg && (
 				<Modal closeFunc={toggleFlickrModal}>
 					<Pic

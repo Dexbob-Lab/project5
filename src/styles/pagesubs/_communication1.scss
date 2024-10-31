@@ -13,10 +13,10 @@
 
 	input[type='text'] {
 		width: 150px;
+		background: transparent;
 		border: none;
 		border-bottom: 1px solid #888;
-		padding: 5px 5px;
-		background: transparent;
+		padding: 5px;
 		resize: none;
 	}
 
@@ -24,7 +24,6 @@
 	input[type='submit'] {
 		cursor: pointer;
 		display: inline-block;
-		padding: 5px 30px;
 		font: 500 0.6rem/1 'orbitron';
 		letter-spacing: 1px;
 		color: #fff;
@@ -32,6 +31,7 @@
 		box-shadow: 5px 5px 10px rgba(var(--keyRGB), 0.05);
 		border-radius: 3px;
 		border: none;
+		padding: 10px 30px;
 	}
 }
 

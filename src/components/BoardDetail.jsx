@@ -101,6 +101,9 @@ export default function BoradDetail({ baseUrl, data = {}, clickEvent }) {
 		}
 	}, []);
 
+	const mouseDownEvent = e => e.target.style.setProperty('opacity', 0.8);
+	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
+
 	return (
 		<div className='boardDetail'>
 			<form>
@@ -170,10 +173,34 @@ export default function BoradDetail({ baseUrl, data = {}, clickEvent }) {
 					</li>
 				</ul>
 				<div className='btnBox'>
-					<input type='reset' value='Initailize' />
-					{!isInsertForm() && <input type='button' onClick={handleDelete} value='Delete' />}
-					{!isInsertForm() && <input type='button' onClick={handleUpdate} value='Update' />}
-					{isInsertForm() && <input type='button' onClick={handleInsert} value='Insert' />}
+					<input type='reset' value='Initailize' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
+					{!isInsertForm() && (
+						<input
+							type='button'
+							onClick={handleDelete}
+							onMouseDown={mouseDownEvent}
+							onMouseUp={mouseUpEvent}
+							value='Delete'
+						/>
+					)}
+					{!isInsertForm() && (
+						<input
+							type='button'
+							onClick={handleUpdate}
+							onMouseDown={mouseDownEvent}
+							onMouseUp={mouseUpEvent}
+							value='Update'
+						/>
+					)}
+					{isInsertForm() && (
+						<input
+							type='button'
+							onClick={handleInsert}
+							onMouseDown={mouseDownEvent}
+							onMouseUp={mouseUpEvent}
+							value='Insert'
+						/>
+					)}
 				</div>
 			</form>
 		</div>

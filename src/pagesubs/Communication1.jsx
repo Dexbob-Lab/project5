@@ -58,15 +58,24 @@ export default function Communication1() {
 			});
 	}, [Password]);
 
+	const mouseDownEvent = e => e.target.style.setProperty('opacity', 0.8);
+	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
+
 	return (
 		<>
 			<Board data={Notice} clickEvent={boardClickEvent}>
 				<form className='searchBox' onSubmit={handleSearch}>
 					<div>
 						<input type='text' placeholder='enter a search word.' />
-						<input type='submit' value='Search' />
+						<input type='submit' value='Search' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
 					</div>
-					<input type='button' value='Write' onClick={noticeClickEvent} />
+					<input
+						type='button'
+						value='Write'
+						onClick={noticeClickEvent}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}
+					/>
 				</form>
 			</Board>
 			{NoticeLockFlg && (
@@ -78,7 +87,7 @@ export default function Communication1() {
 								비밀번호를 입력해 주세요.
 							</div>
 							<input type='password' placeholder='enter your password.' required />
-							<input type='submit' value='Password' />
+							<input type='submit' value='Password' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
 						</aside>
 					</form>
 				</Modal>

@@ -58,15 +58,24 @@ export default function Communication2() {
 			});
 	}, [Password]);
 
+	const mouseDownEvent = e => e.target.style.setProperty('opacity', 0.8);
+	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
+
 	return (
 		<>
 			<Board data={Notice} clickEvent={boardClickEvent}>
 				<form className='searchBox' onSubmit={handleSearch}>
 					<div>
 						<input type='text' placeholder='enter a search word.' />
-						<input type='submit' value='Search' />
+						<input type='submit' value='Search' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
 					</div>
-					<input type='button' value='Write' onClick={noticeClickEvent} />
+					<input
+						type='button'
+						value='Write'
+						onClick={noticeClickEvent}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}
+					/>
 				</form>
 			</Board>
 			{NoticeLockFlg && (

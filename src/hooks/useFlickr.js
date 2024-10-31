@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import _ from 'lodash';
 
-export const useFlickrQuery = (opt = { type: 'mine' }) => {
+export const useFlickrQuery = (opt = {}) => {
 	return useQuery({
 		queryKey: ['GalleryList', opt],
 		queryFn: fetchFlickr,
@@ -13,18 +12,13 @@ export const useFlickrQuery = (opt = { type: 'mine' }) => {
 export default useFlickrQuery;
 
 const fetchFlickr = async opt => {
-	const num = 20;
+	const options = { page: 1, per_page: 20, ...opt.queryKey[1] };
 	const api_key = import.meta.env.VITE_FLICKR_API;
-	const myID = import.meta.env.VITE_MY_ID;
-	const options = 'format=json&nojsoncallback=1';
-	const baseURL = `https://www.flickr.com/services/rest/?api_key=${api_key}`;
-	const types = [
-		{ type: 'mine', method: 'flickr.people.getPhotos', sub: `&user_id=${myID}` },
-		{ type: 'interest', method: 'flickr.interestingness.getList', sub: `&user_id=${myID}` },
-		{ type: 'search', method: 'flickr.photos.search', sub: `&tags=${opt.queryKey[1].tags}` }
-	];
-	const obj = _.find(types, o => o.type === opt.queryKey[1].type);
-	const url = `${baseURL}&method=${obj.method}${obj.sub}&per_page=${num}&${options}`;
+	// const myID = import.meta.env.VITE_MY_ID;
+	let url = 'https://www.flickr.com/services/rest/?format=json&nojsoncallback=1';
+	url += `&method=flickr.photos.search&api_key=${api_key}`;
+	url += `&per_page=${options.per_page}&page=${options.page}`;
+	url += `&text=마라톤${options.tags ? `&tags=${options.tags}` : ''}`;
 
 	const data = await fetch(url);
 	const json = await data.json();
