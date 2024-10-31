@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { FaWindowClose, FaBars } from 'react-icons/fa';
+import { FaWindowClose } from 'react-icons/fa';
 
 export default function Modal({ children, closeFunc }) {
 	useEffect(() => {

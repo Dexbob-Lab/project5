@@ -1,14 +1,14 @@
 .modal {
-	position: fixed;
-	top: 0;
-	left: 0;
 	width: 100%;
 	min-width: 400px;
 	height: 100vh;
 	background-color: rgba(255, 255, 255, 0.8);
-	z-index: 99;
 	backdrop-filter: blur(10px);
 	padding: 10vh 10vw;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9;
 
 	.contents {
 		width: 100%;
@@ -17,12 +17,12 @@
 
 	.btnClose {
 		cursor: pointer;
-		border: none;
-		background: transparent;
 		font: 700 1.5rem/1 'orbitron';
 		letter-spacing: 1px;
 		color: rgba(var(--keyRGB), 1);
 		vertical-align: top;
+		border: none;
+		background: transparent;
 		position: absolute;
 		top: 4vh;
 		right: 5vh;

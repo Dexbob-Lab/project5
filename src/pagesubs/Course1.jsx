@@ -1,6 +1,7 @@
 import useGlobalData from '../hooks/useGlobalData';
 import courseImage from '../assets/images/course1.png';
 import altitudeImage from '../assets/images/altitude1.png';
+import Map from '../components/Map';
 
 export default function Course1() {
 	const { Lang, CurrObject } = useGlobalData();
@@ -24,12 +25,13 @@ export default function Course1() {
 					neque est dolorem explicabo pariatur distinctio modi quam repudiandae! Numquam optio fuga nostrum hic!
 				</p>
 			</article>
-			<figure className='vidFrame'>
+			{/* <figure className='vidFrame'>
 				<iframe
 					title={CurrObject?.text[Lang]}
 					src='https://www.youtube.com/embed/JUDV2j02xgg?si=9NRmkTn7y0KBFlhW'
 					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>
-			</figure>
+			</figure> */}
+			<Map />
 		</>
 	);
 }
