@@ -15,6 +15,10 @@
 		button {
 			font: 300 0.9rem/1 'Orbit';
 			border-bottom: 1px solid #555;
+
+			&:hover {
+				transform: scale(1.1);
+			}
 		}
 	}
 }

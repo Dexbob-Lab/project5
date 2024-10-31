@@ -7,10 +7,15 @@
 	align-items: center;
 	border-bottom: 1px solid #ddd;
 	gap: 100px;
+	perspective: 500px;
 
 	img {
 		width: 50px;
 		border-radius: 30%;
+
+		&:hover {
+			animation: logoAni 1.5s 0.5s infinite ease;
+		}
 	}
 
 	nav {
@@ -30,6 +35,10 @@
 				&.on {
 					transform: scale(1.2) skew(-10deg);
 				}
+
+				&:hover {
+					transform: scale(1.1);
+				}
 			}
 		}
 	}
@@ -39,9 +48,10 @@
 		display: none;
 		transform-origin: 50% 50%;
 		transition: 1s;
+		perspective: 500px;
 
 		&:hover {
-			transform: scale(1.2) rotate(360deg);
+			transform: scale(1.5) rotate3d(1, 1, 1, 360deg);
 		}
 	}
 }
@@ -54,5 +64,17 @@
 		.btnMenuToggle {
 			display: block;
 		}
+	}
+}
+
+@keyframes logoAni {
+	to {
+		transform: rotateY(360deg);
+	}
+}
+
+@keyframes mnbAni {
+	50% {
+		transform: rotate3d(1, 1, 1, 360deg);
 	}
 }
