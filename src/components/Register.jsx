@@ -12,14 +12,14 @@ export default function Register({ children, isVolunteer = false }) {
 		ref_elements.current.forEach(dom => {
 			if (!dom) return;
 			if (dom.name === 'shirt_size') {
-				if (dom.value == shirtSizeList[0]) dom.defaultChecked = true;
-				else dom.defaultChecked = false;
+				if (dom.value == shirtSizeList[0]) dom.checked = true;
+				else dom.checked = false;
 			} else if (dom.name === 'gender') {
-				if (dom.value == genderList[0]) dom.defaultChecked = true;
-				else dom.defaultChecked = false;
+				if (dom.value == genderList[0]) dom.checked = true;
+				else dom.checked = false;
 			} else if (dom.name === 'accommodation') {
-				if (dom.value == accommList[0]) dom.defaultChecked = true;
-				else dom.defaultChecked = false;
+				if (dom.value == accommList[0]) dom.checked = true;
+				else dom.checked = false;
 			} else if (dom.type === 'date') {
 				dom.defaultValue = '1970-01-01';
 			} else {
