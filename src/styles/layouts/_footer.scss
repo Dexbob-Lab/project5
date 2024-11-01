@@ -1,21 +1,75 @@
+// .footer {
+// 	width: 100%;
+// 	min-height: 20vh;
+// 	padding: 50px 10vw;
+// 	color: #aaa;
+// 	background: #333;
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// 	gap: 100px;
+// }
 .footer {
 	width: 100%;
-	min-height: 20vh;
-	padding: 50px 10vw;
-	color: #aaa;
+	padding: 30px 10vw;
 	background: #333;
+	color: #777;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
+	align-content: center;
 	align-items: center;
-	gap: 100px;
 	perspective: 500px;
+	button {
+		img {
+			width: 50px;
+			height: 50px;
+			border-radius: 30%;
+			// margin-bottom: 30px;
 
-	img {
-		width: 50px;
-		border-radius: 30%;
-
-		&:hover {
-			animation: logoAni 1.5s 0.5s infinite ease;
+			&:hover {
+				animation: logoAni 1.5s infinite ease;
+			}
 		}
 	}
+
+	section {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+		justify-content: center;
+		align-items: center;
+
+		ul {
+			display: flex;
+			gap: 30px;
+			font-size: 0.8rem;
+		}
+		// p {
+		// 	width: 20%;
+		// }
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.footer {
+		section {
+			width: 100%;
+			gap: 0px;
+
+			ul {
+				width: 100%;
+				justify-content: flex-start;
+				margin-bottom: 10px;
+				margin-top: 10px;
+			}
+			p {
+				width: 100%;
+				justify-content: flex-start;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
 }

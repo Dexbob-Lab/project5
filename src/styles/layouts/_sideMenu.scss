@@ -9,7 +9,7 @@
 	left: 0;
 	display: flex;
 	flex-wrap: wrap;
-	// z-index: 10;
+	z-index: 10;
 
 	.logo {
 		width: 100%;
@@ -22,7 +22,7 @@
 			border-radius: 30%;
 
 			&:hover {
-				animation: logoAni 1.5s 0.5s infinite ease;
+				animation: logoAni 1.5s infinite ease;
 			}
 		}
 	}

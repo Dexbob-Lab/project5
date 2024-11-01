@@ -5,7 +5,9 @@ export default function Record() {
 	const { Lang, CurrObject } = useGlobalData();
 	return (
 		<Layout className={CurrObject?.name}>
-			<p>{CurrObject?.text[Lang]}</p>
+			<h2>{CurrObject?.text[Lang]}</h2>
+			<h3>기록이 존재하지 않습니다.</h3>
+			<div className='spinner'></div>
 		</Layout>
 	);
 }
