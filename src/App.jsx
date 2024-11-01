@@ -9,7 +9,7 @@ function App() {
 	const location = useLocation();
 	const { CurrObject, setCurrObject, SideMenuFlg } = useGlobalData();
 	!CurrObject && setCurrObject(getMenuByPath(location.pathname));
-	console.log(CurrObject);
+	// console.log(CurrObject);
 	return (
 		<>
 			<Header />

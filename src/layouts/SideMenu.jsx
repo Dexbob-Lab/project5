@@ -19,7 +19,7 @@ export default function SideMenu() {
 		<aside className='sideMenu'>
 			<div className='logo'>
 				<Link to='/'>
-					<img src='logo1.png' width='50' alt='' />
+					<img src='logo/logo1.png' width='50' alt='' />
 				</Link>
 			</div>
 			<nav>

@@ -5,7 +5,6 @@ import useGlobalData from '../hooks/useGlobalData';
 import useLink from '../hooks/useLink';
 
 export default function Header() {
-	// const toggleSideMenu = useGlobalData(state => state.toggleSideMenu);
 	const { Lang, toggleSideMenu } = useGlobalData();
 	const { pathname } = useLocation();
 	const linkPage = useLink();
@@ -13,7 +12,7 @@ export default function Header() {
 	return (
 		<header className='header'>
 			<button onClick={() => linkPage('/')}>
-				<img src='logo1.png' width='50' alt='' />
+				<img src='logo/logo1.png' width='50' alt='' />
 			</button>
 			<nav>
 				<ul className='gnb'>
