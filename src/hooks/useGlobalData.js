@@ -6,16 +6,16 @@ const useGlobalData = create(set => ({
 	SideMenuFlg: false,
 	YoutubeFlg: false,
 	FlickrFlg: false,
-	NoticeFlg: false,
-	NoticeLockFlg: false,
+	BoardFlg: false,
+	BoardLockFlg: false,
 	SetLang: lang => set({ Lang: lang }),
 	setCurrObject: obj => set({ CurrObject: obj }),
 	closeSideMenu: () => set({ SideMenuFlg: false }),
 	toggleSideMenu: () => set(state => ({ SideMenuFlg: !state.SideMenuFlg })),
 	toggleYoutubeModal: () => set(state => ({ YoutubeFlg: !state.YoutubeFlg })),
 	toggleFlickrModal: () => set(state => ({ FlickrFlg: !state.FlickrFlg })),
-	toggleNoticeModal: () => set(state => ({ NoticeFlg: !state.NoticeFlg })),
-	toggleNoticeLockModal: () => set(state => ({ NoticeLockFlg: !state.NoticeLockFlg }))
+	toggleBoardModal: () => set(state => ({ BoardFlg: !state.BoardFlg })),
+	toggleBoardLockModal: () => set(state => ({ BoardLockFlg: !state.BoardLockFlg }))
 }));
 
 export default useGlobalData;

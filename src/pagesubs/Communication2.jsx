@@ -6,22 +6,22 @@ import BoardDetail from '../components/BoardDetail';
 import useGlobalData from '../hooks/useGlobalData';
 
 export default function Communication2() {
-	const [Notice, setNotice] = useState([]);
+	const [Question, setQuestion] = useState([]);
 	const [Search, setSearch] = useState('');
 	const [Password, setPassword] = useState(null);
 	const [Index, setIndex] = useState(-1);
 
-	const { NoticeFlg, NoticeLockFlg, toggleNoticeModal, toggleNoticeLockModal } = useGlobalData();
+	const { BoardFlg, BoardLockFlg, toggleBoardModal, toggleBoardLockModal } = useGlobalData();
 
 	const URL_BASE = import.meta.env.VITE_BOARD_URL + '/qs/question';
 
 	const boardClickEvent = idx => {
 		setIndex(idx);
-		Notice[idx].lockon ? toggleNoticeLockModal() : toggleNoticeModal();
+		Question[idx].lockon ? toggleBoardLockModal() : toggleBoardModal();
 	};
 
-	const noticeClickEvent = () => {
-		toggleNoticeModal();
+	const questionClickEvent = () => {
+		toggleBoardModal();
 		setSearch(Search + ' ');
 		setIndex(-1);
 	};
@@ -42,17 +42,17 @@ export default function Communication2() {
 
 	useEffect(() => {
 		Search
-			? fetchAllNotice(`${URL_BASE}-search/?search=${Search}`, setNotice)
-			: fetchAllNotice(`${URL_BASE}/`, setNotice);
+			? fetchAllQuestion(`${URL_BASE}-search/?search=${Search}`, setQuestion)
+			: fetchAllQuestion(`${URL_BASE}/`, setQuestion);
 	}, [Search]);
 
 	useEffect(() => {
 		Password &&
-			fetchAllNotice(`${URL_BASE}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
+			fetchAllQuestion(`${URL_BASE}-password/?id=${Question[Index].id}&pw=${Password}`, null, res => {
 				setPassword(null);
 				if (res.data) {
-					toggleNoticeLockModal();
-					toggleNoticeModal();
+					toggleBoardLockModal();
+					toggleBoardModal();
 				} else {
 					alert('비밀번호가 일치하지 않습니다.');
 				}
@@ -64,7 +64,7 @@ export default function Communication2() {
 
 	return (
 		<>
-			<Board data={Notice} clickEvent={boardClickEvent}>
+			<Board data={Question} clickEvent={boardClickEvent}>
 				<form id='searchQuestion' onSubmit={handleSearch}>
 					<div>
 						<input type='text' placeholder='enter a search word.' />
@@ -73,14 +73,14 @@ export default function Communication2() {
 					<input
 						type='button'
 						value='Write'
-						onClick={noticeClickEvent}
+						onClick={questionClickEvent}
 						onMouseDown={mouseDownEvent}
 						onMouseUp={mouseUpEvent}
 					/>
 				</form>
 			</Board>
-			{NoticeLockFlg && (
-				<Modal closeFunc={toggleNoticeLockModal}>
+			{BoardLockFlg && (
+				<Modal closeFunc={toggleBoardLockModal}>
 					<form id='passwordQuestion' onSubmit={handlePassword}>
 						<aside>
 							<div>
@@ -93,19 +93,19 @@ export default function Communication2() {
 					</form>
 				</Modal>
 			)}
-			{NoticeFlg && (
-				<Modal closeFunc={noticeClickEvent}>
+			{BoardFlg && (
+				<Modal closeFunc={questionClickEvent}>
 					<BoardDetail
 						baseUrl={URL_BASE}
-						data={Index < 0 ? {} : Notice[Index]}
-						clickEvent={noticeClickEvent}></BoardDetail>
+						data={Index < 0 ? {} : Question[Index]}
+						clickEvent={questionClickEvent}></BoardDetail>
 				</Modal>
 			)}
 		</>
 	);
 }
 
-const fetchAllNotice = (url, setFunc, thenFunc = undefined, catchFunc = undefined) => {
+const fetchAllQuestion = (url, setFunc, thenFunc = undefined, catchFunc = undefined) => {
 	axios
 		.get(url)
 		.then(res => {

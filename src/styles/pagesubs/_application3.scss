@@ -1,17 +1,26 @@
-.appliBox3 {
+.applicationBox3 {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	margin: 30px 0px;
+	margin: 20px 0px;
+	perspective: 100px;
 
 	.regInfo {
 		width: 100%;
-		margin-top: 30px 0;
+		opacity: 0;
+		transform: rotateX(-90deg);
+		transition: 0.5s;
+
+		&.on {
+			opacity: 1;
+			transform: rotateX(0deg);
+			transition: 1s cubic-bezier(0.17, 0.47, 0.28, 1.48);
+		}
 	}
 
 	.regForm {
 		width: 100%;
-		margin-top: 50px;
+		margin-top: 20px;
 	}
 }

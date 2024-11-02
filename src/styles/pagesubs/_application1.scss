@@ -1,4 +1,4 @@
-.appliBox {
+.applicationBox {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -32,7 +32,7 @@
 }
 
 @media screen and (max-width: $tablet) {
-	.appliBox {
+	.applicationBox {
 		.regForm {
 			width: 100%;
 			border-right: none;

@@ -3,8 +3,9 @@ import useGlobalData from '../hooks/useGlobalData';
 
 export default function Application2() {
 	const { Lang, CurrObject } = useGlobalData();
+
 	return (
-		<div className='appliBox'>
+		<div className='applicationBox'>
 			<div className='regForm'>
 				<Register>
 					<input type='hidden' name='information' value={CurrObject.text[Lang]} />

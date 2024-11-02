@@ -1,7 +1,7 @@
 import { FaLock } from 'react-icons/fa';
 import useDatetimeText from '../hooks/useDatetimeText';
 
-export default function Borad({ children, data = [], clickEvent }) {
+export default function Board({ children, data = [], clickEvent }) {
 	const datetimeText = useDatetimeText();
 
 	return (

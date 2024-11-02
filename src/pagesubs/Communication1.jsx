@@ -11,17 +11,36 @@ export default function Communication1() {
 	const [Password, setPassword] = useState(null);
 	const [Index, setIndex] = useState(-1);
 
-	const { NoticeFlg, NoticeLockFlg, toggleNoticeModal, toggleNoticeLockModal } = useGlobalData();
+	const { BoardFlg, BoardLockFlg, toggleBoardModal, toggleBoardLockModal } = useGlobalData();
 
 	const URL_BASE = import.meta.env.VITE_BOARD_URL + '/ns/notice';
 
+	useEffect(() => {
+		Search
+			? fetchAllNotice(`${URL_BASE}-search/?search=${Search}`, setNotice)
+			: fetchAllNotice(`${URL_BASE}/`, setNotice);
+	}, [Search]);
+
+	useEffect(() => {
+		Password &&
+			fetchAllNotice(`${URL_BASE}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
+				setPassword(null);
+				if (res.data) {
+					toggleBoardLockModal();
+					toggleBoardModal();
+				} else {
+					alert('비밀번호가 일치하지 않습니다.');
+				}
+			});
+	}, [Password]);
+
 	const boardClickEvent = idx => {
 		setIndex(idx);
-		Notice[idx].lockon ? toggleNoticeLockModal() : toggleNoticeModal();
+		Notice[idx].lockon ? toggleBoardLockModal() : toggleBoardModal();
 	};
 
 	const noticeClickEvent = () => {
-		toggleNoticeModal();
+		toggleBoardModal();
 		setSearch(Search + ' ');
 		setIndex(-1);
 	};
@@ -39,25 +58,6 @@ export default function Communication1() {
 		setPassword(e.target[0].value);
 		e.target[0].value = '';
 	};
-
-	useEffect(() => {
-		Search
-			? fetchAllNotice(`${URL_BASE}-search/?search=${Search}`, setNotice)
-			: fetchAllNotice(`${URL_BASE}/`, setNotice);
-	}, [Search]);
-
-	useEffect(() => {
-		Password &&
-			fetchAllNotice(`${URL_BASE}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
-				setPassword(null);
-				if (res.data) {
-					toggleNoticeLockModal();
-					toggleNoticeModal();
-				} else {
-					alert('비밀번호가 일치하지 않습니다.');
-				}
-			});
-	}, [Password]);
 
 	const mouseDownEvent = e => e.target.style.setProperty('opacity', 0.8);
 	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
@@ -79,8 +79,8 @@ export default function Communication1() {
 					/>
 				</form>
 			</Board>
-			{NoticeLockFlg && (
-				<Modal closeFunc={toggleNoticeLockModal}>
+			{BoardLockFlg && (
+				<Modal closeFunc={toggleBoardLockModal}>
 					<form id='passwordNotice' onSubmit={handlePassword}>
 						<aside>
 							<div>
@@ -93,7 +93,7 @@ export default function Communication1() {
 					</form>
 				</Modal>
 			)}
-			{NoticeFlg && (
+			{BoardFlg && (
 				<Modal closeFunc={noticeClickEvent}>
 					<BoardDetail
 						baseUrl={URL_BASE}
