@@ -28,6 +28,20 @@
 	.communicationSubMenu {
 		.menuBtn {
 			gap: 20px;
+			button {
+				font: 300 0.8rem/1 'Orbit';
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.communicationSubMenu {
+		.menuBtn {
+			gap: 10px;
+			button {
+				font: 300 0.7rem/1 'Orbit';
+			}
 		}
 	}
 }

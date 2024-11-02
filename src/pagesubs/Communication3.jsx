@@ -1,20 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import Modal from '../components/Modal';
 import Pic from '../components/Pic';
+import Modal from '../components/Modal';
 import useGlobalData from '../hooks/useGlobalData';
 import useFlickrQuery from '../hooks/useFlickr';
 
 export default function Communication3() {
-	const { FlickrFlg, toggleFlickrModal } = useGlobalData();
-	const ref_gallery = useRef(null);
-	const ref_search = useRef(null);
 	const [Index, setIndex] = useState(-1);
 	const [Option, setOption] = useState({ page: 1 });
+	const ref_gallery = useRef(null);
+	const ref_search = useRef(null);
 
-	const baseUrl = 'https://live.staticflickr.com';
-
+	const { FlickrFlg, toggleFlickrModal } = useGlobalData();
 	const { data, isPending } = useFlickrQuery(Option);
-	isPending && console.log('Gallery Loading...');
+
+	const URL_BASE = 'https://live.staticflickr.com';
 
 	useEffect(() => {
 		ref_gallery.current.classList.remove('on');
@@ -56,7 +55,7 @@ export default function Communication3() {
 					</li>
 				</ul>
 			</article>
-			{isPending && <p>Gallery Loading...</p>}
+			{isPending && <p className='photoLoading'>Photo Gallery Loading...</p>}
 			<section ref={ref_gallery} className='galleryList'>
 				{data?.length === 0 && <p>검색 결과가 없습니다.</p>}
 				{data?.map((data, idx) => {
@@ -64,7 +63,7 @@ export default function Communication3() {
 						<article key={idx}>
 							<Pic
 								className='pic'
-								src={`${baseUrl}/${data.server}/${data.id}_${data.secret}_z.jpg`}
+								src={`${URL_BASE}/${data.server}/${data.id}_${data.secret}_z.jpg`}
 								shadow
 								onClick={() => {
 									toggleFlickrModal();
@@ -88,7 +87,7 @@ export default function Communication3() {
 				<Modal closeFunc={toggleFlickrModal}>
 					<Pic
 						style={{ width: '100%', height: '100%' }}
-						src={`${baseUrl}/${data[Index].server}/${data[Index].id}_${data[Index].secret}_b.jpg`}
+						src={`${URL_BASE}/${data[Index].server}/${data[Index].id}_${data[Index].secret}_b.jpg`}
 						shadow
 					/>
 				</Modal>

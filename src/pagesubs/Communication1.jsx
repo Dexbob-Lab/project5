@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Modal from '../components/Modal';
-import useGlobalData from '../hooks/useGlobalData';
 import Board from '../components/Board';
 import BoardDetail from '../components/BoardDetail';
+import useGlobalData from '../hooks/useGlobalData';
 
 export default function Communication1() {
-	const { NoticeFlg, NoticeLockFlg, toggleNoticeModal, toggleNoticeLockModal } = useGlobalData();
 	const [Notice, setNotice] = useState([]);
 	const [Search, setSearch] = useState('');
 	const [Password, setPassword] = useState(null);
 	const [Index, setIndex] = useState(-1);
 
-	const baseUrl = import.meta.env.VITE_BOARD_URL + '/ns/notice';
+	const { NoticeFlg, NoticeLockFlg, toggleNoticeModal, toggleNoticeLockModal } = useGlobalData();
+
+	const URL_BASE = import.meta.env.VITE_BOARD_URL + '/ns/notice';
 
 	const boardClickEvent = idx => {
 		setIndex(idx);
@@ -41,13 +42,13 @@ export default function Communication1() {
 
 	useEffect(() => {
 		Search
-			? fetchAllNotice(`${baseUrl}-search/?search=${Search}`, setNotice)
-			: fetchAllNotice(`${baseUrl}/`, setNotice);
+			? fetchAllNotice(`${URL_BASE}-search/?search=${Search}`, setNotice)
+			: fetchAllNotice(`${URL_BASE}/`, setNotice);
 	}, [Search]);
 
 	useEffect(() => {
 		Password &&
-			fetchAllNotice(`${baseUrl}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
+			fetchAllNotice(`${URL_BASE}-password/?id=${Notice[Index].id}&pw=${Password}`, null, res => {
 				setPassword(null);
 				if (res.data) {
 					toggleNoticeLockModal();
@@ -95,7 +96,7 @@ export default function Communication1() {
 			{NoticeFlg && (
 				<Modal closeFunc={noticeClickEvent}>
 					<BoardDetail
-						baseUrl={baseUrl}
+						baseUrl={URL_BASE}
 						data={Index < 0 ? {} : Notice[Index]}
 						clickEvent={noticeClickEvent}></BoardDetail>
 				</Modal>

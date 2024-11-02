@@ -77,21 +77,3 @@
 		}
 	}
 }
-
-@media screen and (max-width: $tablet) {
-	.modal {
-		padding: 10vh 5vw;
-
-		.btnClose {
-			right: 5vw;
-
-			.mark1 {
-				display: none;
-			}
-			.mark2 {
-				font-size: 2rem;
-				display: block;
-			}
-		}
-	}
-}
