@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import Layout from '../layouts/Layout';
+import { useEffect, useRef, useState } from 'react';
 import Pic from '../components/Pic';
 import Modal from '../components/Modal';
 import useGlobalData from '../hooks/useGlobalData';
@@ -8,8 +7,9 @@ import useCombineText from '../hooks/useCombineText';
 import useYoutubeQuery from '../hooks/useYoutube';
 
 export default function Communication4() {
-	const { YoutubeFlg, CurrObject, toggleYoutubeModal } = useGlobalData();
+	const { YoutubeFlg, toggleYoutubeModal } = useGlobalData();
 	const [Index, setIndex] = useState(-1);
+	const ref_video = useRef(null);
 
 	const shortenText = useShortenText();
 	const combineText = useCombineText();
@@ -17,10 +17,18 @@ export default function Communication4() {
 	const { data, isPending } = useYoutubeQuery();
 	isPending && console.log('Youtube Loading...');
 
+	useEffect(() => {
+		ref_video.current.classList.remove('on');
+		setTimeout(() => {
+			ref_video.current.classList.add('on');
+		}, 500);
+	}, []);
+
 	return (
 		<>
-			<Layout className={CurrObject?.name}>
-				{isPending && <p>Youtube Loading...</p>}
+			{isPending && <p>Youtube Loading...</p>}
+			<section ref={ref_video} id='videoList' className='videoList on'>
+				{data?.length === 0 && <p>검색 결과가 없습니다.</p>}
 				{data?.map((vid, idx) => {
 					return (
 						<article key={idx}>
@@ -42,7 +50,7 @@ export default function Communication4() {
 						</article>
 					);
 				})}
-			</Layout>
+			</section>
 			{YoutubeFlg && (
 				<Modal closeFunc={toggleYoutubeModal}>
 					<figure className='vidFrame'>

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import useDatetimeText from '../hooks/useDatetimeText';
 import axios from 'axios';
 
-export default function BoradDetail({ baseUrl, data = {}, clickEvent }) {
+export default function BoardDetail({ baseUrl, data = {}, clickEvent }) {
 	const ref_nickname = useRef(null);
 	const ref_password = useRef(null);
 	const ref_title = useRef(null);
@@ -105,104 +105,102 @@ export default function BoradDetail({ baseUrl, data = {}, clickEvent }) {
 	const mouseUpEvent = e => e.target.style.setProperty('opacity', 1);
 
 	return (
-		<div className='boardDetail'>
-			<form>
-				<ul>
-					<li>
-						<label htmlFor='nickname'>닉네임</label>
-						<input
-							ref={ref_nickname}
-							type='text'
-							name='nickname'
-							id='nickname'
-							placeholder='닉네임을 입력하세요.'
-							defaultValue={data?.nickname}
-							required
-						/>
-					</li>
-					<li>
-						<label htmlFor='title'>제목</label>
-						<input
-							ref={ref_title}
-							type='text'
-							name='title'
-							id='title'
-							placeholder='제목을 입력하세요.'
-							defaultValue={data?.title}
-							required
-						/>
-					</li>
-					<li>
-						<label htmlFor='contents'>내용</label>
-						<textarea
-							ref={ref_contents}
-							name='contents'
-							id='contents'
-							placeholder='내용을 입력하세요.'
-							defaultValue={data?.contents}
-							required></textarea>
-					</li>
-					<li>
-						<label htmlFor='password'>비밀번호</label>
-						<input
-							ref={ref_password}
-							type='password'
-							name='password'
-							id='password'
-							placeholder='비밀번호를 입력하세요.'
-							required
-						/>
-					</li>
-					<li>
-						<label htmlFor='lockon'>비밀글지정</label>
-						<input
-							ref={ref_lockon}
-							type='checkbox'
-							name='lockon'
-							id='lockon'
-							defaultChecked={data?.lockon ? 'checked' : ''}
-						/>
-					</li>
-					<li className={isInsertForm() ? 'hide' : ''}>
-						<label>갱신일</label>
-						{datetimeText(data?.updated)}
-					</li>
-					<li className={isInsertForm() ? 'hide' : ''}>
-						<label>등록일</label>
-						{datetimeText(data?.created)}
-					</li>
-				</ul>
-				<div className='btnBox'>
-					<input type='reset' value='Initailize' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
-					{!isInsertForm() && (
-						<input
-							type='button'
-							onClick={handleDelete}
-							onMouseDown={mouseDownEvent}
-							onMouseUp={mouseUpEvent}
-							value='Delete'
-						/>
-					)}
-					{!isInsertForm() && (
-						<input
-							type='button'
-							onClick={handleUpdate}
-							onMouseDown={mouseDownEvent}
-							onMouseUp={mouseUpEvent}
-							value='Update'
-						/>
-					)}
-					{isInsertForm() && (
-						<input
-							type='button'
-							onClick={handleInsert}
-							onMouseDown={mouseDownEvent}
-							onMouseUp={mouseUpEvent}
-							value='Insert'
-						/>
-					)}
-				</div>
-			</form>
-		</div>
+		<form id='boardDetail'>
+			<ul>
+				<li>
+					<label htmlFor='nickname'>닉네임</label>
+					<input
+						ref={ref_nickname}
+						type='text'
+						name='nickname'
+						id='nickname'
+						placeholder='닉네임을 입력하세요.'
+						defaultValue={data?.nickname}
+						required
+					/>
+				</li>
+				<li>
+					<label htmlFor='title'>제목</label>
+					<input
+						ref={ref_title}
+						type='text'
+						name='title'
+						id='title'
+						placeholder='제목을 입력하세요.'
+						defaultValue={data?.title}
+						required
+					/>
+				</li>
+				<li>
+					<label htmlFor='contents'>내용</label>
+					<textarea
+						ref={ref_contents}
+						name='contents'
+						id='contents'
+						placeholder='내용을 입력하세요.'
+						defaultValue={data?.contents}
+						required></textarea>
+				</li>
+				<li>
+					<label htmlFor='password'>비밀번호</label>
+					<input
+						ref={ref_password}
+						type='password'
+						name='password'
+						id='password'
+						placeholder='비밀번호를 입력하세요.'
+						required
+					/>
+				</li>
+				<li>
+					<label htmlFor='lockon'>비밀글지정</label>
+					<input
+						ref={ref_lockon}
+						type='checkbox'
+						name='lockon'
+						id='lockon'
+						defaultChecked={data?.lockon ? 'checked' : ''}
+					/>
+				</li>
+				<li className={isInsertForm() ? 'hide' : ''}>
+					<label>갱신일</label>
+					{datetimeText(data?.updated)}
+				</li>
+				<li className={isInsertForm() ? 'hide' : ''}>
+					<label>등록일</label>
+					{datetimeText(data?.created)}
+				</li>
+			</ul>
+			<div className='btnBox'>
+				<input type='reset' value='Initialize' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
+				{!isInsertForm() && (
+					<input
+						type='button'
+						onClick={handleDelete}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}
+						value='Delete'
+					/>
+				)}
+				{!isInsertForm() && (
+					<input
+						type='button'
+						onClick={handleUpdate}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}
+						value='Update'
+					/>
+				)}
+				{isInsertForm() && (
+					<input
+						type='button'
+						onClick={handleInsert}
+						onMouseDown={mouseDownEvent}
+						onMouseUp={mouseUpEvent}
+						value='Insert'
+					/>
+				)}
+			</div>
+		</form>
 	);
 }

@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function Register({ children, isVolunteer = false }) {
-	const ref_form = useRef(null);
+	const ref_register = useRef(null);
 	const ref_elements = useRef([]);
 	const shirtSizeList = ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
 	const genderList = ['남성(Male)', '여성(Female)'];
@@ -32,7 +32,7 @@ export default function Register({ children, isVolunteer = false }) {
 		e.preventDefault();
 
 		emailjs
-			.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, ref_form.current, {
+			.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, ref_register.current, {
 				publicKey: import.meta.env.VITE_PUBLIC_KEY
 			})
 			.then(res => {
@@ -49,7 +49,7 @@ export default function Register({ children, isVolunteer = false }) {
 	const setRef_elements = dom => (ref_elements.current[cnt++] = dom);
 
 	return (
-		<form ref={ref_form} className='register' onSubmit={sendForm}>
+		<form ref={ref_register} id='register' onSubmit={sendForm}>
 			<span>
 				<label htmlFor='uName'>이름(Name)</label>
 				<input ref={setRef_elements} type='text' name='user_name' id='uName' placeholder='Leave your name' required />

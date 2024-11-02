@@ -13,23 +13,7 @@ $count: 4;
 	flex-wrap: wrap;
 	justify-content: space-between;
 
-	ul {
-		display: flex;
-		gap: 20px;
-		margin-bottom: 20px;
-
-		li {
-			cursor: pointer;
-			font: 400 0.7rem/1 'orbitron';
-			color: #fff;
-			letter-spacing: 1px;
-			padding: 10px 20px;
-			border-radius: 4px;
-			background: rgba(var(--keyRGB), 0.8);
-		}
-	}
-
-	form {
+	#searchPhoto {
 		margin-bottom: 20px;
 		display: flex;
 		gap: 10px;
@@ -54,6 +38,22 @@ $count: 4;
 			border-radius: 3px;
 			border: none;
 			padding: 5px 30px;
+		}
+	}
+
+	ul {
+		display: flex;
+		gap: 20px;
+		margin-bottom: 20px;
+
+		li {
+			cursor: pointer;
+			font: 400 0.7rem/1 'orbitron';
+			color: #fff;
+			letter-spacing: 1px;
+			padding: 10px 20px;
+			border-radius: 4px;
+			background: rgba(var(--keyRGB), 0.8);
 		}
 	}
 }

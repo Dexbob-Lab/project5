@@ -13,7 +13,7 @@ export default function Communication3() {
 
 	const baseUrl = 'https://live.staticflickr.com';
 
-	const { data: Flickr, isPending } = useFlickrQuery(Option);
+	const { data, isPending } = useFlickrQuery(Option);
 	isPending && console.log('Gallery Loading...');
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ export default function Communication3() {
 	return (
 		<>
 			<article className='galleryBtn'>
-				<form onSubmit={handleSearch}>
+				<form id='searchPhoto' onSubmit={handleSearch}>
 					<input ref={ref_search} type='text' placeholder='Enter a search word.' />
 					<button onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent}>
 						Search
@@ -56,10 +56,10 @@ export default function Communication3() {
 					</li>
 				</ul>
 			</article>
+			{isPending && <p>Gallery Loading...</p>}
 			<section ref={ref_gallery} className='galleryList'>
-				{isPending && <p>Gallery Loading...</p>}
-				{Flickr?.length === 0 && <p>검색 결과가 없습니다.</p>}
-				{Flickr?.map((data, idx) => {
+				{data?.length === 0 && <p>검색 결과가 없습니다.</p>}
+				{data?.map((data, idx) => {
 					return (
 						<article key={idx}>
 							<Pic
@@ -88,7 +88,7 @@ export default function Communication3() {
 				<Modal closeFunc={toggleFlickrModal}>
 					<Pic
 						style={{ width: '100%', height: '100%' }}
-						src={`${baseUrl}/${Flickr[Index].server}/${Flickr[Index].id}_${Flickr[Index].secret}_b.jpg`}
+						src={`${baseUrl}/${data[Index].server}/${data[Index].id}_${data[Index].secret}_b.jpg`}
 						shadow
 					/>
 				</Modal>

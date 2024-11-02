@@ -64,7 +64,7 @@ export default function Communication1() {
 	return (
 		<>
 			<Board data={Notice} clickEvent={boardClickEvent}>
-				<form className='searchBox' onSubmit={handleSearch}>
+				<form id='searchNotice' onSubmit={handleSearch}>
 					<div>
 						<input type='text' placeholder='enter a search word.' />
 						<input type='submit' value='Search' onMouseDown={mouseDownEvent} onMouseUp={mouseUpEvent} />
@@ -80,7 +80,7 @@ export default function Communication1() {
 			</Board>
 			{NoticeLockFlg && (
 				<Modal closeFunc={toggleNoticeLockModal}>
-					<form className='passwordBox' onSubmit={handlePassword}>
+					<form id='passwordNotice' onSubmit={handlePassword}>
 						<aside>
 							<div>
 								비밀글 입니다. <br />
