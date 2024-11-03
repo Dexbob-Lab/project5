@@ -1,5 +1,6 @@
 .sideMenu {
 	width: 300px;
+	// min-width: 200px;
 	height: 100vh;
 	background-color: rgba(147, 130, 130, 0.7);
 	backdrop-filter: blur(20px);
@@ -48,6 +49,7 @@
 				color: #fff;
 				text-shadow: 2px 2px 4px #aaa;
 			}
+
 			&:hover {
 				border-top: 2px solid rgba(255, 255, 255, 0.2);
 				border-bottom: 2px solid rgba(0, 0, 0, 0.2);

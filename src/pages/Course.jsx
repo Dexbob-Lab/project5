@@ -1,12 +1,13 @@
-import Layout from '../layouts/Layout';
-import { getMenuByNames } from '../data/menuData';
-import useGlobalData from '../hooks/useGlobalData';
 import { useEffect, useState } from 'react';
+import Layout from '../layouts/Layout';
+import useGlobalData from '../hooks/useGlobalData';
+import { getMenuByNames } from '../data/menuData';
 
 export default function Course() {
+	const [SubPage, setSubPage] = useState(null);
+
 	const { Lang, setCurrObject, CurrObject } = useGlobalData();
 	const [c1, c2] = getMenuByNames(['course1', 'course2']);
-	const [SubPage, setSubPage] = useState(null);
 
 	const moveSubPages = obj => {
 		setCurrObject(obj);

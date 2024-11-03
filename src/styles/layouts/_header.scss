@@ -1,13 +1,10 @@
 .header {
 	width: 100%;
-	min-height: 10vh;
 	padding: 30px 10vw;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-bottom: 1px solid #ddd;
-	gap: 100px;
-	perspective: 500px;
+	border-bottom: 1px solid #ccc;
 
 	img {
 		width: 50px;
@@ -18,51 +15,56 @@
 		}
 	}
 
-	nav {
+	.gnb {
 		display: flex;
-		align-items: center;
 		gap: 50px;
+		font: 600 1rem/1 'Raleway';
+		color: #555;
+		transition: 0.5s;
 
-		.gnb {
-			display: flex;
-			gap: 50px;
-			font: 600 1rem/1 'Raleway';
-			transition: 0.5s;
+		li {
+			cursor: pointer;
 
-			li {
-				cursor: pointer;
+			&.on {
+				color: rgba(var(--keyRGB), 1);
+				transform: scale(1.2) skew(-10deg);
+			}
 
-				&.on {
-					transform: scale(1.2) skew(-10deg);
-				}
-
-				&:hover {
-					transform: scale(1.1);
-				}
+			&:hover {
+				animation: gnbAni 0.3s infinite ease;
 			}
 		}
 	}
 
 	.btnMenuToggle {
-		font: 900 1.6rem/1 'Jua';
+		font: 900 1.8rem/1 'Jua';
+		position: fixed;
+		top: 40px;
+		right: 10vw;
 		display: none;
-		transform-origin: 50% 50%;
-		transition: 1s;
-		perspective: 500px;
+		transition: 0.5s;
 
 		&:hover {
-			transform: scale(1.5) rotate3d(1, 1, 1, 360deg);
+			animation: mnbAni 0.5s infinite ease-in;
 		}
 	}
 }
 
 @media screen and (max-width: $tablet) {
 	.header {
-		nav {
+		.gnb {
 			display: none;
 		}
 		.btnMenuToggle {
 			display: block;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.header {
+		.btnMenuToggle {
+			font: 900 1.6rem/1 'Jua';
 		}
 	}
 }
@@ -73,8 +75,18 @@
 	}
 }
 
+@keyframes gnbAni {
+	from {
+		transform: rotate(2deg) scale(1.2);
+	}
+	to {
+		transform: rotate(-2deg) scale(1.2);
+	}
+}
+
 @keyframes mnbAni {
 	50% {
-		transform: rotate3d(1, 1, 1, 360deg);
+		transform: scale(1.2);
+		backdrop-filter: blur(10px);
 	}
 }

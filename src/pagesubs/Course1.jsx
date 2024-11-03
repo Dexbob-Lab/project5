@@ -1,14 +1,14 @@
+import Map from '../components/Map';
 import useGlobalData from '../hooks/useGlobalData';
 import courseImage from '../assets/images/course1.png';
 import altitudeImage from '../assets/images/altitude1.png';
-import Map from '../components/Map';
 
 export default function Course1() {
 	const { Lang, CurrObject } = useGlobalData();
 
 	return (
 		<>
-			<Map gpxPath={'gpx/21.2km.gpx'} />
+			<Map />
 			<article className='contents'>
 				<h3 className='title'>{CurrObject?.text[Lang]}</h3>
 				<div>

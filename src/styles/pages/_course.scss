@@ -22,3 +22,29 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	.courseSubMenu {
+		.menuBtn {
+			gap: 30px;
+			button {
+				font: 300 0.8rem/1 'Orbit';
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.courseSubMenu {
+		.pageName {
+			width: 50%;
+		}
+		.menuBtn {
+			width: 50%;
+			gap: 10px;
+			button {
+				font: 300 0.7rem/1 'Orbit';
+			}
+		}
+	}
+}

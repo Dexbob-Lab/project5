@@ -77,3 +77,29 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+	#boardDetail {
+		ul li {
+			textarea {
+				height: 250px;
+			}
+		}
+		.btnBox {
+			gap: 15px;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	#boardDetail {
+		ul li {
+			textarea {
+				height: 200px;
+			}
+		}
+		.btnBox {
+			gap: 10px;
+		}
+	}
+}

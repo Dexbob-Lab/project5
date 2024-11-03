@@ -1,5 +1,4 @@
 import Layout from '../layouts/Layout';
-import Pic from '../components/Pic';
 import useGlobalData from '../hooks/useGlobalData';
 import InformationImg from '../assets/images/information.png';
 
@@ -59,9 +58,8 @@ export default function Information() {
 					구례역대합실
 				</p>
 				<br />
-				<p>※상기 내용은 주최 측의 사정에 따라 일부 변경될 수 있습니다.</p>
-				<p>The above contents are subject to change.</p>
-				<br />
+				<p>※ 상기 내용은 주최 측의 사정에 따라 일부 변경될 수 있습니다.</p>
+				<p>※ The above contents are subject to change.</p>
 			</article>
 		</Layout>
 	);

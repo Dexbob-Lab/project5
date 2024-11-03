@@ -21,7 +21,6 @@
 			background: transparent;
 			resize: none;
 
-			//placeholer 요소 안쪽의 텍스트 스타일링
 			&::placeholder {
 				color: rgba(var(--keyRGB), 0.6);
 				font: 400 0.8rem/1.2 'raleway';

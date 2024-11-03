@@ -30,12 +30,12 @@ export default function Map() {
 		ref_mapFrame.current.innerHTML = '';
 		ref_instMap.current = new kakao.maps.Map(ref_mapFrame.current, {
 			center: latlng,
-			level: 5
+			level: 4
 		});
 		ref_instMarker.current = new kakao.maps.Marker({
+			map: ref_instMap.current,
 			position: latlng
 		});
-		ref_instMarker.current.setMap(ref_instMap.current);
 
 		[ref_instType, ref_instZoom].forEach(inst => ref_instMap.current.addControl(inst));
 	}, [latlng, ref_instType, ref_instZoom]);
@@ -47,7 +47,7 @@ export default function Map() {
 
 	useEffect(() => {
 		createMap();
-		mappginGPX(ref_instMap.current, gpxPath);
+		mappingGPX(ref_instMap.current, gpxPath);
 		window.addEventListener('resize', throttleInitPos);
 		return () => window.removeEventListener('resize', throttleInitPos);
 	}, [Index, throttleInitPos, createMap, gpxPath]);
@@ -133,7 +133,7 @@ const infoData2 = [
 	}
 ];
 
-function mappginGPX(map, gpxPath) {
+function mappingGPX(map, gpxPath) {
 	// GPX 파일 읽기
 	const reader = new FileReader();
 	reader.onload = e => {

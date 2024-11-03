@@ -14,19 +14,17 @@ export default function Header() {
 			<button onClick={() => linkPage('/')}>
 				<img src='logo/logo1.png' width='50' alt='' />
 			</button>
-			<nav>
-				<ul className='gnb'>
-					{MENU.map((data, idx) => {
-						if (data.type === TYPE.MAIN) {
-							return (
-								<li key={idx} className={pathname === data.path ? 'on' : ''} onClick={() => linkPage(data.path)}>
-									{data.text[Lang]}
-								</li>
-							);
-						}
-					})}
-				</ul>
-			</nav>
+			<ul className='gnb'>
+				{MENU.map((data, idx) => {
+					if (data.type === TYPE.MAIN) {
+						return (
+							<li key={idx} className={pathname === data.path ? 'on' : ''} onClick={() => linkPage(data.path)}>
+								{data.text[Lang]}
+							</li>
+						);
+					}
+				})}
+			</ul>
 			<button className='btnMenuToggle' onClick={toggleSideMenu}>
 				<FaBars />
 			</button>

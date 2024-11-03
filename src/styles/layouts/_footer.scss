@@ -11,6 +11,7 @@
 // }
 .footer {
 	width: 100%;
+	min-height: 20vh;
 	padding: 30px 10vw;
 	background: #333;
 	color: #777;
@@ -19,13 +20,12 @@
 	justify-content: space-between;
 	align-content: center;
 	align-items: center;
-	perspective: 500px;
+
 	button {
 		img {
 			width: 50px;
 			height: 50px;
 			border-radius: 30%;
-			// margin-bottom: 30px;
 
 			&:hover {
 				animation: logoAni 1.5s infinite ease;

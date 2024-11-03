@@ -81,3 +81,19 @@
 		}
 	}
 }
+
+@media screen and (max-width: $tablet) {
+}
+
+@media screen and (max-width: $mobile) {
+	#searchNotice {
+		input[type='text'] {
+			width: 120px;
+		}
+
+		input[type='button'],
+		input[type='submit'] {
+			padding: 10px 20px;
+		}
+	}
+}
