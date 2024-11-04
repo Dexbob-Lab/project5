@@ -57,7 +57,7 @@ export default function Communication3() {
 			</article>
 			{isPending && <p className='photoLoading'>Photo Gallery Loading...</p>}
 			<section ref={ref_gallery} className='galleryList'>
-				{data?.length === 0 && <p>검색 결과가 없습니다.</p>}
+				{data?.length === 0 && <h3 className='nolist'>검색 결과가 없습니다.</h3>}
 				{data?.map((data, idx) => {
 					return (
 						<article key={idx}>

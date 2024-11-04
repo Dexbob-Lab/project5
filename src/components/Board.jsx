@@ -34,6 +34,7 @@ export default function Board({ children, data = [], clickEvent }) {
 					})}
 				</tbody>
 			</table>
+			{data?.length === 0 && <h3 className='nolist'>검색 결과가 없습니다.</h3>}
 		</div>
 	);
 }

@@ -6,7 +6,7 @@ export default function Record() {
 	return (
 		<Layout className={CurrObject?.name}>
 			<h2>{CurrObject?.text[Lang]}</h2>
-			<h3>기록이 존재하지 않습니다.</h3>
+			<h3 className='nolist'>기록이 존재하지 않습니다.</h3>
 			<div className='spinner'></div>
 		</Layout>
 	);

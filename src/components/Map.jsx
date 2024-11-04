@@ -25,7 +25,6 @@ export default function Map() {
 	const { current: ref_info } = useRef(data);
 	const { latlng } = ref_info[Index];
 
-	// 지도관련 랜더링 함수, 메모이제이션, 의존성배열 변경시에만 재연산
 	const createMap = useCallback(() => {
 		ref_mapFrame.current.innerHTML = '';
 		ref_instMap.current = new kakao.maps.Map(ref_mapFrame.current, {

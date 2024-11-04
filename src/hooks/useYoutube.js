@@ -12,7 +12,7 @@ const useYoutubeQuery = () => {
 export default useYoutubeQuery;
 
 const fetchYoutube = async () => {
-	const num = 10;
+	const num = 20;
 	const api_key = import.meta.env.VITE_YOUTUBE_API;
 	let pid = 'PLQZ4zrrwKYcUsgEsQ4yRAHJ12DWkMjjPK';
 	const baseUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';

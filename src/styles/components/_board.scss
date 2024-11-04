@@ -72,4 +72,12 @@
 			}
 		}
 	}
+
+	.nolist {
+		background: transparent;
+		color: rgb(96, 73, 197);
+		position: absolute;
+		top: calc(30% + 100px);
+		left: calc(50% - 100px);
+	}
 }
