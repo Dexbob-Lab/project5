@@ -48,28 +48,28 @@ export const MENU = [
 	{
 		name: 'course1',
 		path: '/course/course1',
-		text: { en: 'Course (21.2km)', kr: '코스 (21.2km)' },
+		text: { en: 'Course (22km)', kr: '코스 (22km)' },
 		page: Course1,
 		type: TYPE.SUB
 	},
 	{
 		name: 'course2',
 		path: '/course/course2',
-		text: { en: 'Course (12.61km)', kr: '코스 (12.61km)' },
+		text: { en: 'Course (13km)', kr: '코스 (13km)' },
 		page: Course2,
 		type: TYPE.SUB
 	},
 	{
 		name: 'application1',
 		path: '/application/application1',
-		text: { en: 'Course (21.2km)', kr: '코스 (21.2km)' },
+		text: { en: 'Course (22km)', kr: '코스 (22km)' },
 		page: Application1,
 		type: TYPE.SUB
 	},
 	{
 		name: 'application2',
 		path: '/application/application2',
-		text: { en: 'Course (12.61km)', kr: '코스 (12.61km)' },
+		text: { en: 'Course (13km)', kr: '코스 (13km)' },
 		page: Application2,
 		type: TYPE.SUB
 	},

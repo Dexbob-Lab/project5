@@ -21,9 +21,9 @@ export default function Information() {
 				<h3>접수 기간 | REGISTRATION</h3>
 				<p>2024년 08월 28일 ~ 11월 01일(선착순)</p>
 				<br />
-				<h3>대회 일정 | RACE</h3>
-				<p>SCHEDULE 21.2k : 2024.11.16(SAT) 09:00a.m.</p>
-				<p>12.61k : 2024.11.16(SAT) 09:10a.m. </p>
+				<h3>대회 일정 | RACE SCHEDULE</h3>
+				<p>22km : 2024.11.16(SAT) 09:00a.m.</p>
+				<p>13km : 2024.11.16(SAT) 09:10a.m. </p>
 				<br />
 				<h3>대회 장소 | VENUE</h3>
 				<p>전라남도 구례군 토지면 섬진강대로 5038</p>
@@ -31,11 +31,11 @@ export default function Information() {
 				<p>( 5038 Seomjingang-daero, Jido-myeon, Gurye-gun, Jeollanam-do Toji Elementary School Playground)</p>
 				<br />
 				<h3>대회 종목 | RACE</h3>
-				<p>21.3k, 12.61k</p>
+				<p>22km, 13km</p>
 				<br />
 				<h3>참가비 | FEE</h3>
-				<p>21.2km - 59,000KRW</p>
-				<p>12.61km - 39,000KRW</p>
+				<p>22km - 59,000KRW</p>
+				<p>13km - 39,000KRW</p>
 				<br />
 				<h3>기념품 | SOUVENIR</h3>
 				<p>배번, 완주 메달, 기록증, 단감 외</p>
