@@ -11,6 +11,11 @@ export default function Header() {
 
 	return (
 		<header className='header'>
+			<div className='movewrap'>
+				<div>
+					<div className='moving'></div>
+				</div>
+			</div>
 			<button onClick={() => linkPage('/')}>
 				<img src='logo/logo1.png' width='50' alt='' />
 			</button>

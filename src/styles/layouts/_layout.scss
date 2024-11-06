@@ -1,8 +1,8 @@
 main {
 	width: 100%;
 	padding: 5vh 10vw;
-	min-height: 70vh;
-	background: #ddd;
+	min-height: 60vh;
+	background: linear-gradient(to bottom, #ffffff00, #ddd);
 	display: flex;
 	justify-content: center;
 	border-bottom: 1px solid #ddd;
@@ -11,9 +11,4 @@ main {
 		width: 100%;
 		padding: 10px 0;
 	}
-
-	// .main {
-	// 	width: 100%;
-	// 	padding: 0;
-	// }
 }

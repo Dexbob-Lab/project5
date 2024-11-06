@@ -30,6 +30,8 @@
 				cursor: pointer;
 				width: 33%;
 				height: auto;
+				border-radius: 5px;
+				box-shadow: -10px 10px 10px #999999bd;
 				object-fit: contain;
 				position: absolute;
 				top: 0;
@@ -40,7 +42,7 @@
 				&.on {
 					transform: rotate3d(1, 1, 1, 360deg);
 					object-fit: contain;
-					width: 100%;
+					width: 60%;
 					height: auto;
 					opacity: 1;
 					z-index: 5;
@@ -50,6 +52,7 @@
 		}
 		animation: cardAni1 1.5s ease-in;
 	}
+
 	.contents {
 		width: 100%;
 		height: 100%;
@@ -72,5 +75,33 @@
 		transform: rotate3d(0.5, 0.5, 0.5, 720deg);
 		width: 100%;
 		height: 100%;
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.information {
+		figure {
+			div {
+				.pic {
+					&.on {
+						width: 80%;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.information {
+		figure {
+			div {
+				.pic {
+					&.on {
+						width: 100%;
+					}
+				}
+			}
+		}
 	}
 }
