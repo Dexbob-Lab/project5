@@ -11,4 +11,23 @@ main {
 		width: 100%;
 		padding: 10px 0;
 	}
+
+	#goTopBtn {
+		font: 900 4rem/1 'Jua';
+		position: fixed;
+		bottom: 5vh;
+		right: 5vw;
+		background: transparent;
+		transition: 0.5s;
+
+		&:hover {
+			animation: mnbAni 0.5s infinite ease-in;
+		}
+	}
+}
+
+@keyframes mnbAni {
+	50% {
+		transform: scale(1.2);
+	}
 }
