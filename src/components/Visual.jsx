@@ -8,10 +8,10 @@ import 'swiper/css';
 import 'swiper/css/virtual';
 
 export default function Visual() {
+	const SRC_BASE = 'https://live.staticflickr.com';
 	const [Index, setIndex] = useState(-1);
 	const [Option, setOption] = useState({ page: 2 });
 	const { data, isPending } = useFlickrQuery(Option);
-	const srcBase = 'https://live.staticflickr.com';
 	const autoplayStart = swiper => setTimeout(() => swiper.autoplay.start(), 500);
 
 	return (
@@ -63,7 +63,7 @@ export default function Visual() {
 								{/* swiperSlide 요소에는 바로 css모션 스타일 적용 비권장 */}
 								<div className='inner'>
 									<Pic
-										src={`${srcBase}/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
+										src={`${SRC_BASE}/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
 										style={{ width: '100%', height: '100%' }}
 										shadow
 									/>

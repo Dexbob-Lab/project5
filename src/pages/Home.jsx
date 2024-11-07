@@ -8,13 +8,24 @@ import { AiTwotoneAlert } from 'react-icons/ai';
 export default function Home() {
 	const { Lang, CurrObject } = useGlobalData();
 	const { data } = useYoutubeQuery({ num: 1 });
-	// console.log(data);
+
 	return (
 		<Layout className={CurrObject?.name}>
 			<h1>{CurrObject?.text[Lang]}</h1>
-
 			<Visual />
 			<HomeInfo />
+			<div className='homeVideo'>
+				<h2>소개 영상</h2>
+				{!!data && (
+					<figure className='vidFrame'>
+						<iframe
+							title='youtube'
+							type='text/html'
+							src={`https://www.youtube.com/embed/${data[0]?.snippet.resourceId.videoId}`}
+						/>
+					</figure>
+				)}
+			</div>
 		</Layout>
 	);
 }

@@ -11,7 +11,7 @@ export default function Communication4() {
 	const ref_video = useRef(null);
 
 	const { YoutubeFlg, toggleYoutubeModal } = useGlobalData();
-	const { data, isPending } = useYoutubeQuery();
+	const { data, isPending } = useYoutubeQuery({ num: 20 });
 
 	useEffect(() => {
 		ref_video.current.classList.remove('on');

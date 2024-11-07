@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 
-const useYoutubeQuery = () => {
+const useYoutubeQuery = (opt = { num: 10 }) => {
 	return useQuery({
-		queryKey: ['youtubeList'],
+		queryKey: ['youtubeList', opt],
 		queryFn: fetchYoutube,
 		staleTime: 1000 * 60,
 		gcTime: 1000 * 60
@@ -11,8 +11,9 @@ const useYoutubeQuery = () => {
 
 export default useYoutubeQuery;
 
-const fetchYoutube = async () => {
-	const num = 20;
+const fetchYoutube = async ({ queryKey }) => {
+	const num = queryKey[1].num;
+	console.log('youtube ', num);
 	const api_key = import.meta.env.VITE_YOUTUBE_API;
 	let pid = 'PLQZ4zrrwKYcUsgEsQ4yRAHJ12DWkMjjPK';
 	const baseUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';
