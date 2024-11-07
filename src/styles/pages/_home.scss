@@ -1,7 +1,62 @@
 .home {
+	width: 100%;
+
 	section {
 		h1 {
 			font: 900 2rem/1 #333;
+			color: #444;
+		}
+		.homeInfo {
+			width: 100%;
+			padding: 5vh 0 5vh;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			h2 {
+				width: 100%;
+				margin: 10px;
+			}
+			.homeArticle {
+				width: 50%;
+				border-left: 2px solid #777;
+				padding-left: 10px;
+				p > a {
+					text-align: center;
+					text-decoration: underline;
+				}
+			}
+		}
+		.map {
+			width: 100%;
+			padding: 2vh 0 5vh;
+		}
+	}
+}
+
+@media screen and (max-width: $mobile) {
+	.home {
+		section {
+			.homeInfo {
+				width: 100%;
+				padding: 5vh 0 5vh;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+				h2 {
+					width: 100%;
+					margin: 10px;
+				}
+				.homeArticle {
+					width: 100%;
+					border-left: 2px solid #777;
+					padding-left: 10px;
+					margin-bottom: 20px;
+				}
+			}
+			.map {
+				width: 100%;
+				padding: 2vh 0 5vh;
+			}
 		}
 	}
 }

@@ -55,10 +55,10 @@ export default function Course1() {
 					<br /> <br />
 				</div>
 			</article>
-			<article className='maps'>
-				<p>코스</p>
+			<article className='mapImage'>
+				<h3>코스</h3>
 				<img src={courseImage} alt='코스' className='pic' />
-				<p>고도</p>
+				<h3>고도</h3>
 				<img src={altitudeImage} alt='고도' className='pic' />
 			</article>
 		</>

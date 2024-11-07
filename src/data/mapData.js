@@ -1,7 +1,9 @@
 const kakao = window.kakao;
 
-const gpxPaths = ['gpx/21.2km.gpx', 'gpx/12.61km.gpx'];
-const gpxPath = course => (course === 'course1' ? gpxPaths[0] : gpxPaths[1]);
+const gpxPaths = ['gpx/21.2km.gpx', 'gpx/12.61km.gpx', ''];
+const gpxPath = course => {
+	return course === 'course1' ? gpxPaths[0] : course === 'course2' ? gpxPaths[1] : gpxPaths[2];
+};
 
 const getLatLng = (lat, lng) => new kakao.maps.LatLng(lat, lng);
 
@@ -39,9 +41,23 @@ const infoData2 = [
 	}
 ];
 
-export const points = course => (course === 'course1' ? infoData1 : infoData2);
+const infoData3 = [
+	{
+		title: '오시는 길',
+		latlng: getLatLng(35.19716017554816, 127.5279837075072)
+	}
+];
+
+export const points = course => {
+	return course === 'course1' ? infoData1 : course === 'course1' ? infoData2 : infoData3;
+};
 
 export function mappingGPX(map, course) {
+	const gpxFile = gpxPath(course);
+	if (!gpxFile) {
+		map.setLevel(4);
+		return;
+	}
 	// GPX 파일 읽기
 	const reader = new FileReader();
 	reader.onload = e => {
@@ -50,7 +66,7 @@ export function mappingGPX(map, course) {
 	};
 	// 파일을 가져오기 위한 XMLHttpRequest 객체 생성
 	const xhr = new XMLHttpRequest();
-	xhr.open('GET', gpxPath(course), true);
+	xhr.open('GET', gpxFile, true);
 	xhr.responseType = 'blob';
 	xhr.onload = () => {
 		if (xhr.status === 200) {

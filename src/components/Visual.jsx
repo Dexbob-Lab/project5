@@ -27,28 +27,30 @@ export default function Visual() {
 				modules={[Autoplay, Pagination, Virtual]}
 				pagination={{ type: 'fraction' }}
 				slidesPerView={1}
-				spaceBetween={0}
+				// spaceBetween={10}
 				breakpoints={{
 					1000: {
-						slidesPerView: 2,
-						spaceBetween: 50
+						slidesPerView: 2
+						// spaceBetween: 10
 					},
-					1400: {
+					2000: {
 						slidesPerView: 3,
-						spaceBetween: 100
+						spaceBetween: 0
 					}
 				}}
 				loop={true}
 				centeredSlides={true}
 				autoplay={{
-					delay: 1500,
+					delay: 2000,
 					disableOnInteraction: true
 				}}
-				onSwiper={swiper => setTimeout(() => swiper.autoplay.start(), 1000)}
+				observer={true}
+				observeParents={true}
+				onSwiper={swiper => setTimeout(() => swiper.autoplay.start(), 500)}
 				onSlideChange={el => setIndex(el.realIndex)}>
 				{!isPending &&
 					data.map((pic, idx) => {
-						if (idx >= 20) return null;
+						if (idx >= 20) return;
 						return (
 							<SwiperSlide key={idx} virtualIndex={idx}>
 								{/* swiperSlide 요소에는 바로 css모션 스타일 적용 비권장 */}

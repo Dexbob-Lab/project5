@@ -8,7 +8,7 @@ export default function Map() {
 	const currObject = useGlobalData(state => state.CurrObject);
 
 	const [Index, setIndex] = useState(0);
-	const [Terrain, setTerrain] = useState(true);
+	const [Terrain, setTerrain] = useState(false);
 	const [Roadview, setRoadview] = useState(false);
 
 	const ref_mapFrame = useRef(null);
@@ -78,26 +78,30 @@ export default function Map() {
 			</figure>
 			<nav className='btnSet'>
 				<ul className='branch'>
-					{ref_info.map((data, idx) => (
-						<li
-							key={idx}
-							className={idx === Index ? 'on' : ''}
-							onClick={() => {
-								setIndex(idx);
-								setRoadview(false);
-								// [setTerrain, setRoadview].forEach(func => func(false));
-							}}>
-							{data.title}
-						</li>
-					))}
+					{ref_info.length > 1 &&
+						ref_info.map((data, idx) => (
+							<li
+								key={idx}
+								className={idx === Index ? 'on' : ''}
+								onClick={() => {
+									setIndex(idx);
+									setRoadview(false);
+								}}>
+								{data.title}
+							</li>
+						))}
 				</ul>
 				<ul className='btnToggleSet'>
-					<li className={Terrain ? 'on' : ''} onClick={() => setTerrain(!Terrain)}>
-						{`Terrain ${Terrain ? 'OFF' : 'ON'}`}
-					</li>
-					<li className={Roadview ? 'on' : ''} onClick={() => setRoadview(!Roadview)}>
-						{`Roadview ${Roadview ? 'OFF' : 'ON'}`}
-					</li>
+					{ref_info.length > 1 && (
+						<>
+							<li className={Terrain ? 'on' : ''} onClick={() => setTerrain(!Terrain)}>
+								{`Terrain ${Terrain ? 'OFF' : 'ON'}`}
+							</li>
+							<li className={Roadview ? 'on' : ''} onClick={() => setRoadview(!Roadview)}>
+								{`Roadview ${Roadview ? 'OFF' : 'ON'}`}
+							</li>
+						</>
+					)}
 				</ul>
 			</nav>
 		</section>

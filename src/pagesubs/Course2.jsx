@@ -53,12 +53,12 @@ export default function Course2() {
 					<br /> <br />
 				</div>
 			</article>
-			<figure className='maps'>
-				<p>코스</p>
-				<img src={courseImage} alt='' />
-				<p>고도</p>
-				<img src={altitudeImage} alt='' />
-			</figure>
+			<article className='mapImage'>
+				<h3>코스</h3>
+				<img src={courseImage} alt='코스' className='pic' />
+				<h3>고도</h3>
+				<img src={altitudeImage} alt='고도' className='pic' />
+			</article>
 		</>
 	);
 }
