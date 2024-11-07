@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Autoplay, Pagination, Virtual } from 'swiper/modules';
 import { FaPlay } from 'react-icons/fa';
@@ -8,7 +8,7 @@ import 'swiper/css';
 import 'swiper/css/virtual';
 
 export default function Visual() {
-	const [Index, setIndex] = useState(0);
+	const [Index, setIndex] = useState(-1);
 	const [Option, setOption] = useState({ page: 2 });
 	const { data, isPending } = useFlickrQuery(Option);
 	const srcBase = 'https://live.staticflickr.com';
@@ -38,14 +38,19 @@ export default function Visual() {
 						spaceBetween: 0
 					}
 				}}
+				grabCursor={true}
 				loop={true}
 				centeredSlides={true}
 				autoplay={{
 					delay: 2000,
 					disableOnInteraction: true
 				}}
-				observer={true}
-				observeParents={true}
+				onInit={swiper => {
+					setTimeout(() => {
+						swiper.update();
+						swiper.slideTo(0);
+					}, 1000);
+				}}
 				onSwiper={swiper => setTimeout(() => swiper.autoplay.start(), 500)}
 				onSlideChange={el => setIndex(el.realIndex)}>
 				{!isPending &&

@@ -4,7 +4,6 @@ const gpxPaths = ['gpx/21.2km.gpx', 'gpx/12.61km.gpx', ''];
 const gpxPath = course => {
 	return course === 'course1' ? gpxPaths[0] : course === 'course2' ? gpxPaths[1] : gpxPaths[2];
 };
-
 const getLatLng = (lat, lng) => new kakao.maps.LatLng(lat, lng);
 
 const infoData1 = [
@@ -49,7 +48,7 @@ const infoData3 = [
 ];
 
 export const points = course => {
-	return course === 'course1' ? infoData1 : course === 'course1' ? infoData2 : infoData3;
+	return course === 'course1' ? infoData1 : course === 'course2' ? infoData2 : infoData3;
 };
 
 export function mappingGPX(map, course) {

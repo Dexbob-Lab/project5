@@ -8,7 +8,7 @@ import { AiTwotoneAlert } from 'react-icons/ai';
 export default function Home() {
 	const { Lang, CurrObject } = useGlobalData();
 	const { data } = useYoutubeQuery({ num: 1 });
-	console.log(data);
+	// console.log(data);
 	return (
 		<Layout className={CurrObject?.name}>
 			<h1>{CurrObject?.text[Lang]}</h1>
