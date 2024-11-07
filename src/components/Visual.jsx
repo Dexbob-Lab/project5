@@ -12,6 +12,7 @@ export default function Visual() {
 	const [Option, setOption] = useState({ page: 2 });
 	const { data, isPending } = useFlickrQuery(Option);
 	const srcBase = 'https://live.staticflickr.com';
+	const autoplayStart = swiper => setTimeout(() => swiper.autoplay.start(), 500);
 
 	return (
 		<figure className='visual'>
@@ -49,9 +50,10 @@ export default function Visual() {
 					setTimeout(() => {
 						swiper.update();
 						swiper.slideTo(0);
-					}, 1000);
+						autoplayStart(swiper);
+					}, 500);
 				}}
-				onSwiper={swiper => setTimeout(() => swiper.autoplay.start(), 500)}
+				onSwiper={autoplayStart}
 				onSlideChange={el => setIndex(el.realIndex)}>
 				{!isPending &&
 					data.map((pic, idx) => {
