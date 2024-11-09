@@ -1,7 +1,7 @@
 main {
 	width: 100%;
 	padding: 5vh 10vw;
-	min-height: 60vh;
+	min-height: 70vh;
 	background: linear-gradient(to bottom, #ffffff00, #ddd);
 	display: flex;
 	justify-content: center;
@@ -19,6 +19,7 @@ main {
 		right: 5vw;
 		background: transparent;
 		transition: 0.5s;
+		z-index: 10;
 
 		&:hover {
 			animation: mnbAni 0.5s infinite ease-in;
